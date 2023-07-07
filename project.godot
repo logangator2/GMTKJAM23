@@ -11,11 +11,14 @@ config_version=5
 [application]
 
 config/name="GMTK23"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=768
 window/stretch/mode="canvas_items"
 
 [rendering]

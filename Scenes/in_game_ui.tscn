@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://crb3jtsn0hcmc"]
+
+[node name="in_game_ui" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="UIBackground" type="ColorRect" parent="Background"]
+top_level = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -128.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.54902, 0.54902, 0.54902, 1)
+
+[node name="GameUI" type="Control" parent="Background/UIBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -45.0
+offset_right = 550.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="Background/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/UIBackground/GameUI/CenterContainer"]
+layout_mode = 2
+
+[node name="EndTurnButton" type="Button" parent="Background/UIBackground/GameUI/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "End Turn
+"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Background/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/UIBackground/GameUI/CenterContainer2"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="Background/UIBackground/GameUI/CenterContainer2/HBoxContainer"]
+layout_mode = 2
+text = "..."

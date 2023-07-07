@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://docxdbgt20lqc"]
+
+[ext_resource type="PackedScene" uid="uid://crb3jtsn0hcmc" path="res://Scenes/in_game_ui.tscn" id="1_hvpg1"]
+[ext_resource type="PackedScene" uid="uid://cj2g7ev1pnv21" path="res://Scenes/test_tilemap.tscn" id="2_avd2d"]
+
+[node name="test_game" type="Node2D"]
+
+[node name="in_game_ui" parent="." instance=ExtResource("1_hvpg1")]
+
+[node name="test_tilemap" parent="." instance=ExtResource("2_avd2d")]
