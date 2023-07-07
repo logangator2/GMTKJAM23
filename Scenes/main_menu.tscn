@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj6qa6sy16656"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_8nnor"]
+[ext_resource type="Texture2D" uid="uid://b8t6sgh827hmc" path="res://TestBackground.png" id="2_ao8t4"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_8nnor")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ao8t4")
+
+[node name="MenuControl" type="Control" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect/MenuControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -63.0
+offset_right = 122.5
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MenuControl/CenterContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="TextureRect/MenuControl/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Invasive Species"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="TextureRect/MenuControl/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="TextureRect/MenuControl/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play (Needs Scene Connection)
+"
+
+[node name="QuitButton" type="Button" parent="TextureRect/MenuControl/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="TextureRect/MenuControl/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TextureRect/MenuControl/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
