@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwsa1uuooa1q5"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_2dgts"]
+[ext_resource type="Texture2D" uid="uid://bdyucnm2ipwlo" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0125.png" id="2_ogftd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55wci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ogftd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
+position = Vector2(32, -32)
+script = ExtResource("1_2dgts")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_55wci")
