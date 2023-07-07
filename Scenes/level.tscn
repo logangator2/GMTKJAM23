@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://cr4mnr1mglesb"]
 
+[gd_scene load_steps=16 format=3 uid="uid://dpbcko18iltwk"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_5i357"]
 [ext_resource type="Texture2D" uid="uid://c6lcckuvj4c2p" path="res://Assets/kenney_tiny-town/Tilemap/tilemap_packed.png" id="1_70k8x"]
-[ext_resource type="Script" path="res://level.gd" id="1_tl0ui"]
 [ext_resource type="Texture2D" uid="uid://x5af1fhixble" path="res://Assets/kenney_roguelike-rpg-pack/Spritesheet/roguelikeSheet_transparent.png" id="2_cvqiq"]
 [ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="2_ei30o"]
 [ext_resource type="Texture2D" uid="uid://fbf3oo7hm8v7" path="res://Assets/kenney_input-prompts-pixel-16/Tilemap/tilemap_packed.png" id="3_ciqir"]
 [ext_resource type="Texture2D" uid="uid://db4ki2qss8idc" path="res://Assets/kenney_pixel-platformer/Tilemap/tiles_packed.png" id="3_fxn1f"]
 [ext_resource type="Texture2D" uid="uid://doxaqg4gk2qom" path="res://Assets/kenney_pixel-platformer-farm-expansion/Tilemap/tilemap_packed.png" id="4_r2k6d"]
 [ext_resource type="Texture2D" uid="uid://bj13infu78cy" path="res://Assets/kenney_pixel-platformer/Tilemap/characters_packed.png" id="6_1vmvs"]
+[ext_resource type="PackedScene" uid="uid://cwsa1uuooa1q5" path="res://Scenes/player.tscn" id="8_0nvnl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aisnv"]
 texture = ExtResource("1_70k8x")
@@ -2852,11 +2853,11 @@ sources/3 = SubResource("TileSetAtlasSource_hb2l5")
 sources/4 = SubResource("TileSetAtlasSource_1ob40")
 sources/5 = SubResource("TileSetAtlasSource_u56hu")
 
+
 [node name="Level" type="Node2D" node_paths=PackedStringArray("tiles")]
 script = ExtResource("1_tl0ui")
 tiles = NodePath("tiles")
 player_scene = ExtResource("2_ei30o")
-
 [node name="tiles" type="TileMap" parent="."]
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_i0mix")
