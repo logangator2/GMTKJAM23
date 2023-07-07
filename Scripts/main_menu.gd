@@ -1,6 +1,6 @@
 extends Node
 
-# @export var level_1_scene:PackedScene
+@export var play_scene:PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +11,7 @@ func _process(delta):
     pass
 
 func _on_play_button_pressed():
-    # get_tree().change_scene_to_packed(level_1_scene)
+    get_tree().change_scene_to_packed(play_scene)
     pass
 
 func _on_quit_button_pressed():

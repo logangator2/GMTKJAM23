@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgos1hbcmula6"]
+
+[ext_resource type="Texture2D" uid="uid://b8t6sgh827hmc" path="res://test_background.png" id="1_6ktwp"]
+
+[node name="test_scene2" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_6ktwp")
+
+[node name="UIBackground" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -100.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.54902, 0.54902, 0.54902, 1)
+
+[node name="GameUI" type="Control" parent="Background/UIBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -45.0
+offset_right = 500.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="Background/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/UIBackground/GameUI/CenterContainer"]
+layout_mode = 2
+
+[node name="EndTurnButton" type="Button" parent="Background/UIBackground/GameUI/CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "End Turn
+"
