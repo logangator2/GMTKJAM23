@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bluevg2hns82w"
-path="res://.godot/imported/roguelikeChar_transparent.png-22f60da927f5be4bf5020f38abe12014.ctex"
+uid="uid://p48athg2sl1a"
+path="res://.godot/imported/roguelikeChar_transparent.png-b010d22548e9e4584887dfdf7301ba55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_roguelike-rpg-pack/Spritesheet/roguelikeChar_transparent.png"
-dest_files=["res://.godot/imported/roguelikeChar_transparent.png-22f60da927f5be4bf5020f38abe12014.ctex"]
+source_file="res://Scenes/roguelikeChar_transparent.png"
+dest_files=["res://.godot/imported/roguelikeChar_transparent.png-b010d22548e9e4584887dfdf7301ba55.ctex"]
 
 [params]
 

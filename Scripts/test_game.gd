@@ -9,9 +9,7 @@ var action_1_used = false
 var action_2_used = false
 var action_3_used = false
 
-signal plant
-signal protect
-signal eat
+@export var map_scene: PackedScene
 
 @export var Action_1:Button
 @export var Action_2:Button
@@ -20,6 +18,8 @@ signal eat
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var map = map_scene.instantiate()
+	add_child(map)
 	# Shuffle actions, make sure eat is not in first 'hand'
 	action_array.shuffle()
 	if turn_counter == 1 and (action_array[0] == "Eat"):
@@ -67,34 +67,39 @@ func _on_action_1_pressed():
 	print(Action_1.text)
 	action_1_used = true
 	if Action_1.text == "Plant":
-		plant.emit()
+		get_child(1, true).get_child(1, true).plant()
 		
 	if Action_1.text == "Protect":
-		# sent to player?
-		pass
+		get_child(1, true).get_child(1, true).protect()
+		
 	if Action_1.text == "Eat":
-		# sent to crop?
-		pass
+		get_child(1, true).get_child(1, true).eat()
 
 func _on_action_2_pressed():
 	print(Action_2.text)
 	action_2_used = true
 	if Action_2.text == "Plant":
-		pass
+		get_child(1, true).get_child(1, true).plant()
+		
 	if Action_2.text == "Protect":
-		pass
+		get_child(1, true).get_child(1, true).protect()
+		
 	if Action_2.text == "Eat":
-		pass
+		get_child(1, true).get_child(1, true).eat()
+		
 
 func _on_action_3_pressed():
 	print(Action_3.text)
 	action_3_used = true
 	if Action_3.text == "Plant":
-		pass
+		get_child(1, true).get_child(1, true).plant()
+		
 	if Action_3.text == "Protect":
-		pass
+		get_child(1, true).get_child(1, true).protect()
+		
 	if Action_3.text == "Eat":
-		pass
+		get_child(1, true).get_child(1, true).eat()
+		
 
 # Handles pause/settings menu
 func _on_settings_button_pressed():
