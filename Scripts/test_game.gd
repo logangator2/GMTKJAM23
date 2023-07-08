@@ -2,6 +2,8 @@ extends Node2D
 
 var turn_counter = 1
 
+var intruction_flag : bool = true
+
 var action_array = ["Plant", "Plant", "Plant", "Plant", "Protect", 
 "Protect", "Protect", "Protect", "Eat", "Eat"]
 
@@ -32,6 +34,11 @@ func _ready():
     Action_1.text = action_array[0]
     Action_2.text = action_array[1]
     Action_3.text = action_array[2]
+
+func _input(event):
+    if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and intruction_flag:
+        $in_game_ui/InstructionContainer.hide()
+        intruction_flag = false
 
 # Handle a new turn
 func new_turn():
@@ -112,3 +119,9 @@ func _on_cancel_button_pressed():
 # Handles quitting the game
 func _on_quit_button_pressed():
     get_tree().quit()
+
+# Displays instructions on how to play
+func _on_help_button_pressed():
+    intruction_flag = true
+    $in_game_ui/InstructionContainer.show()
+    $in_game_ui/PauseMenuContainer.hide()
