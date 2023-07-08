@@ -13,18 +13,21 @@ func plant():
 	plant_sig.emit()
 
 func protect():
-	print("protecting!")
-	protect_sig.emit()
-	
+    print("protecting!")
+    protect_sig.emit()
+    
 func eat():
-	print("eating!")
-	
+    print("eating!")
+    
+func play_sound():
+    $PlantingAudio.play()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(get_node("/root/test_game/test_tilemap").plant_callable)
-	plant_sig.connect(get_node("/root/test_game/test_tilemap").plant_callable)
-	protect_sig.connect(get_node("/root/test_game/test_tilemap").protect_callable)
-	var vec2_coord = transform.origin
-	plant_coord = Vector2i(vec2_coord)
-	plant_coord -= Vector2i(tile_size/2, tile_size/2)
-	plant_coord = plant_coord / Vector2i(tile_size, tile_size)
+    print(get_node("/root/test_game/test_tilemap").plant_callable)
+    plant_sig.connect(get_node("/root/test_game/test_tilemap").plant_callable)
+    protect_sig.connect(get_node("/root/test_game/test_tilemap").protect_callable)
+    var vec2_coord = transform.origin
+    plant_coord = Vector2i(vec2_coord)
+    plant_coord -= Vector2i(tile_size/2, tile_size/2)
+    plant_coord = plant_coord / Vector2i(tile_size, tile_size)
