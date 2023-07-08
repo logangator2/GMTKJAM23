@@ -39,6 +39,9 @@ func _input(event):
     if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and intruction_flag:
         $in_game_ui/InstructionContainer.hide()
         intruction_flag = false
+    if (Input.is_action_just_pressed("Mute")):
+        var bus_index = AudioServer.get_bus_index("Master")
+        AudioServer.set_bus_mute(bus_index, true)
         
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
