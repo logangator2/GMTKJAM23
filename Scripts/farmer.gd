@@ -11,7 +11,6 @@ signal killed_weed
 
 func farmer_start():
 	print("I am the farmer now.")
-	pass
 	# Acquire tiles from parent tilemap
 	var tile_node = get_parent()
 	var tiles = tile_node.get_child(0)
@@ -53,12 +52,12 @@ func farmer_start():
 		i_new_possible_location = Vector2i(new_possible_location)
 		# Ensures valid dirt space
 		var is_dirt : bool = tiles.get_cell_tile_data(0, new_possible_location).get_custom_data("dirt")
-		if not new_possible_location in foreground_cells and is_dirt:
+		if not i_new_possible_location in foreground_cells and is_dirt:
 			
 			#if space is occupied and is not crop
 			for plant_location in plant_spaces: # gives each location of player plant
 				if i_new_possible_location == plant_location:
-					killed_weed.emit()
+					killed_weed.emit(plant_location)
 					print("emitted!")
 					current_location = new_possible_location
 					transform.origin = Vector2((new_possible_location[0] * tile_size) + int(tile_size/2),
@@ -83,7 +82,10 @@ func farmer_start():
 		
 func get_coords(coordinates):
 	current_location = coordinates
+	
+func play_sound():
+	$UprootAudio.play()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	killed_weed.connect(get_parent().attack_callable)

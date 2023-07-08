@@ -19,7 +19,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="farmer" type="Node2D"]
+[node name="farmer" type="Node2D" groups=["farmer"]]
 script = ExtResource("1_ulkul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
