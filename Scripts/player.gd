@@ -1,7 +1,7 @@
 extends Node2D
 
 func plant():
-	print("planting!")
+    print("planting!")
 
 func protect():
 	print("protecting!")
@@ -11,4 +11,4 @@ func eat():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(transform)
+    print(transform)

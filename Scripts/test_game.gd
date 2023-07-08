@@ -36,32 +36,32 @@ func _ready():
 
 # Handle a new turn
 func new_turn():
-	print("Starting turn %d" % turn_counter)
-	
-	# Shuffle Actions
-	action_array.shuffle()
-	# NOTE: Error in logic since action button 1 will always be Eat after turn 3
-	if turn_counter > 3 and (action_array[0] != "Eat" or action_array[1] != "Eat" or action_array[2] != "Eat"):
-		action_array[0] = "Eat"
-	
-	# Reset Button Names
-	Action_1.text = action_array[0]
-	Action_2.text = action_array[1]
-	Action_3.text = action_array[2]
-	
-	# Reset Button Uses
-	action_1_used = false
-	action_2_used = false
-	action_3_used = false
+    print("Starting turn %d" % turn_counter)
+    
+    # Shuffle Actions
+    action_array.shuffle()
+    # NOTE: Error in logic since action button 1 will always be Eat after turn 3
+    if turn_counter > 3 and (action_array[0] != "Eat" or action_array[1] != "Eat" or action_array[2] != "Eat"):
+        action_array[0] = "Eat"
+    
+    # Reset Button Names
+    Action_1.text = action_array[0]
+    Action_2.text = action_array[1]
+    Action_3.text = action_array[2]
+    
+    # Reset Button Uses
+    action_1_used = false
+    action_2_used = false
+    action_3_used = false
 
 # Handles when end turn button is pressed
 func _on_end_turn_button_pressed():
-	# Increment turn counter
-	print("Turn Ended")
-	turn_counter += 1
-	# TODO: Trigger farmer actions
-	# Call new turn
-	new_turn()
+    # Increment turn counter
+    print("Turn Ended")
+    turn_counter += 1
+    # TODO: Trigger farmer actions
+    # Call new turn
+    new_turn()
 
 func _on_action_1_pressed():
 	print(Action_1.text)
@@ -99,17 +99,16 @@ func _on_action_3_pressed():
 		
 	if Action_3.text == "Eat":
 		get_child(1, true).get_child(1, true).eat()
-		
 
 # Handles pause/settings menu
 func _on_settings_button_pressed():
-	# Open menu
-	$in_game_ui/PauseMenuContainer.show()
+    # Open menu
+    $in_game_ui/PauseMenuContainer.show()
 
 # Hides the pause menu
 func _on_cancel_button_pressed():
-	$in_game_ui/PauseMenuContainer.hide()
+    $in_game_ui/PauseMenuContainer.hide()
 
 # Handles quitting the game
 func _on_quit_button_pressed():
-	get_tree().quit()
+    get_tree().quit()
