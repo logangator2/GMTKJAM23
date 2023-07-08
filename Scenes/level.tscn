@@ -1,14 +1,20 @@
+
 [gd_scene load_steps=17 format=3 uid="uid://cr4mnr1mglesb"]
 
+
+[gd_scene load_steps=16 format=3 uid="uid://dpbcko18iltwk"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_5i357"]
 [ext_resource type="Texture2D" uid="uid://c6lcckuvj4c2p" path="res://Assets/kenney_tiny-town/Tilemap/tilemap_packed.png" id="1_70k8x"]
-[ext_resource type="Script" path="res://level.gd" id="1_tl0ui"]
 [ext_resource type="Texture2D" uid="uid://x5af1fhixble" path="res://Assets/kenney_roguelike-rpg-pack/Spritesheet/roguelikeSheet_transparent.png" id="2_cvqiq"]
+
 [ext_resource type="PackedScene" uid="uid://cwsa1uuooa1q5" path="res://Scenes/player.tscn" id="2_ei30o"]
+
 [ext_resource type="Texture2D" uid="uid://fbf3oo7hm8v7" path="res://Assets/kenney_input-prompts-pixel-16/Tilemap/tilemap_packed.png" id="3_ciqir"]
 [ext_resource type="Texture2D" uid="uid://db4ki2qss8idc" path="res://Assets/kenney_pixel-platformer/Tilemap/tiles_packed.png" id="3_fxn1f"]
 [ext_resource type="PackedScene" uid="uid://lt2caksyl7tm" path="res://Scenes/corn.tscn" id="3_quky3"]
 [ext_resource type="Texture2D" uid="uid://doxaqg4gk2qom" path="res://Assets/kenney_pixel-platformer-farm-expansion/Tilemap/tilemap_packed.png" id="4_r2k6d"]
 [ext_resource type="Texture2D" uid="uid://bj13infu78cy" path="res://Assets/kenney_pixel-platformer/Tilemap/characters_packed.png" id="6_1vmvs"]
+[ext_resource type="PackedScene" uid="uid://cwsa1uuooa1q5" path="res://Scenes/player.tscn" id="8_0nvnl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aisnv"]
 texture = ExtResource("1_70k8x")
@@ -2859,6 +2865,11 @@ tiles = NodePath("tiles")
 player_scene = ExtResource("2_ei30o")
 crop_scene = ExtResource("3_quky3")
 
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("tiles")]
+script = ExtResource("1_tl0ui")
+tiles = NodePath("tiles")
+player_scene = ExtResource("2_ei30o")
 [node name="tiles" type="TileMap" parent="."]
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_i0mix")
@@ -2870,6 +2881,7 @@ layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
+
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(131073, 0, 6, 131074, 65536, 6, 131075, 65536, 7, 131076, 196608, 6, 65540, 131072, 5, 65538, 65536, 5, 65537, 0, 5, 1, 0, 4, 2, 65536, 4, 3, 196608, 4, 4, 131072, 4, 65539, 196608, 5, 131072, 524288, 8, 65536, 524288, 7, 5, 524288, 6, 6, 589824, 6, 7, 589824, 3, 8, 589824, 6, 9, 589824, 3, 10, 589824, 6, 11, 589824, 3, 12, 589824, 6, 13, 589824, 3, 14, 589824, 6, 15, 589824, 3, 16, 589824, 6, 17, 589824, 3, 18, 589824, 6, 19, 655360, 6, 65541, 589824, 4)
 layer_2/name = "trees"
@@ -2879,3 +2891,4 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 3
 layer_2/tile_data = PackedInt32Array(720913, 262144, 1, 655377, 262144, 0, 720912, 262144, 2)
+

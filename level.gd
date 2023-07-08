@@ -1,7 +1,9 @@
 extends Node
 
+
 var map_width : int = 20
 var map_height : int = 12
+
 
 var tile_size : int = 64
 
