@@ -1,7 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://cr4mnr1mglesb"]
 
 [ext_resource type="Texture2D" uid="uid://c6lcckuvj4c2p" path="res://Assets/kenney_tiny-town/Tilemap/tilemap_packed.png" id="1_70k8x"]
-[ext_resource type="Script" path="res://level.gd" id="1_tl0ui"]
 [ext_resource type="Texture2D" uid="uid://x5af1fhixble" path="res://Assets/kenney_roguelike-rpg-pack/Spritesheet/roguelikeSheet_transparent.png" id="2_cvqiq"]
 [ext_resource type="PackedScene" uid="uid://cwsa1uuooa1q5" path="res://Scenes/player.tscn" id="2_ei30o"]
 [ext_resource type="Texture2D" uid="uid://fbf3oo7hm8v7" path="res://Assets/kenney_input-prompts-pixel-16/Tilemap/tilemap_packed.png" id="3_ciqir"]
@@ -9,6 +8,65 @@
 [ext_resource type="PackedScene" uid="uid://lt2caksyl7tm" path="res://Scenes/corn.tscn" id="3_quky3"]
 [ext_resource type="Texture2D" uid="uid://doxaqg4gk2qom" path="res://Assets/kenney_pixel-platformer-farm-expansion/Tilemap/tilemap_packed.png" id="4_r2k6d"]
 [ext_resource type="Texture2D" uid="uid://bj13infu78cy" path="res://Assets/kenney_pixel-platformer/Tilemap/characters_packed.png" id="6_1vmvs"]
+
+[sub_resource type="GDScript" id="GDScript_06tgq"]
+script/source = "extends Node
+
+var map_width : int = 20
+var map_height : int = 12
+
+var tile_size : int = 64
+
+@export var tiles : TileMap
+
+@export var player_scene: PackedScene
+@export var crop_scene: PackedScene
+
+func set_player_start():
+	var foreground_cells : Array = tiles.get_used_cells(1)
+	var player = player_scene.instantiate()
+	
+	var spawned : bool = false
+
+	while !spawned:
+		var player_x : int = randi_range(1, map_width - 3)
+		var player_y : int = randi_range(1, map_height - 3)
+
+		var player_possible_coord = Vector2i(player_x, player_y)
+		var is_dirt : bool = tiles.get_cell_tile_data(0, player_possible_coord).get_custom_data(\"dirt\")
+		if not player_possible_coord in foreground_cells and is_dirt:
+			player.transform.origin = Vector2((player_x * tile_size) + int(tile_size/2), (player_y * tile_size) + int(tile_size/2))
+			add_child(player)
+			spawned = true
+		else:
+			print(\"try again player\")
+			
+
+func spawn_level_crops():
+	var foreground_cells : Array = tiles.get_used_cells(1)
+	var crop = crop_scene.instantiate()
+	
+
+	var spawned : bool = false
+	while !spawned:
+		var crop_x : int = randi_range(1, map_width - 3)
+		var crop_y : int = randi_range(1, map_height - 3)
+		
+		var crop_possible_coord = Vector2i(crop_x, crop_y)
+		var is_dirt : bool = tiles.get_cell_tile_data(0, crop_possible_coord).get_custom_data(\"dirt\")
+		if (not crop_possible_coord in foreground_cells) and is_dirt:
+			crop.transform.origin = Vector2((crop_x * tile_size) + int(tile_size/2), (crop_y * tile_size) + int(tile_size/2))
+			add_child(crop)
+			spawned = true
+		else:
+			print(\"try again crop\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_player_start()
+	for i in range(4):
+		spawn_level_crops()
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aisnv"]
 texture = ExtResource("1_70k8x")
@@ -2854,7 +2912,7 @@ sources/4 = SubResource("TileSetAtlasSource_1ob40")
 sources/5 = SubResource("TileSetAtlasSource_u56hu")
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("tiles")]
-script = ExtResource("1_tl0ui")
+script = SubResource("GDScript_06tgq")
 tiles = NodePath("tiles")
 player_scene = ExtResource("2_ei30o")
 crop_scene = ExtResource("3_quky3")
