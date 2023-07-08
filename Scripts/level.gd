@@ -67,6 +67,7 @@ func spawn_level_farmer():
         if (not farmer_possible_coord in foreground_cells) and is_dirt:
             farmer.transform.origin = Vector2((farmer_x * tile_size) + int(tile_size/2), (farmer_y * tile_size) + int(tile_size/2))
             add_child(farmer)
+            farmer.get_coords(farmer_possible_coord)
             spawned = true
         else:
             print("try again farmer")
