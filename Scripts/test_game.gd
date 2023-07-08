@@ -98,13 +98,13 @@ func _on_action_3_pressed():
 
 # Handles pause/settings menu
 func _on_settings_button_pressed():
-    # Open menu
-    $in_game_ui/PauseMenuContainer.show()
+	# Open menu
+	$in_game_ui/PauseMenuContainer.show()
 
 # Hides the pause menu
 func _on_cancel_button_pressed():
-    $in_game_ui/PauseMenuContainer.hide()
+	$in_game_ui/PauseMenuContainer.hide()
 
 # Handles quitting the game
 func _on_quit_button_pressed():
-    get_tree().quit()
+	get_tree().quit()
