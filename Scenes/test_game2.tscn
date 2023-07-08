@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ovamm1046h7m"]
+[gd_scene load_steps=5 format=3 uid="uid://ovamm1046h7m"]
 
 [ext_resource type="Script" path="res://Scripts/test_game.gd" id="1_fi6og"]
 [ext_resource type="PackedScene" uid="uid://cj2g7ev1pnv21" path="res://Scenes/test_tilemap.tscn" id="2_nj7h2"]
 [ext_resource type="PackedScene" uid="uid://crb3jtsn0hcmc" path="res://Scenes/in_game_ui.tscn" id="3_4433h"]
+[ext_resource type="AudioStream" uid="uid://c8afplqel75ka" path="res://Assets/Short Retro Platformer Loop #1.mp3" id="4_a3gbj"]
 
 [node name="test_game" type="Node2D" node_paths=PackedStringArray("Action_1", "Action_2", "Action_3")]
 script = ExtResource("1_fi6og")
@@ -151,6 +152,9 @@ you lose!
 once per turn.
 
 4. Click End Turn when you are finished pressing any buttons you want to use this turn."
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="in_game_ui/InstructionContainer"]
+stream = ExtResource("4_a3gbj")
 
 [node name="PauseMenuContainer" type="CenterContainer" parent="in_game_ui"]
 visible = false

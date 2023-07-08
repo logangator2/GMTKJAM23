@@ -8,7 +8,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    pass
+    if $AudioStreamPlayer2D.playing == false:
+        $AudioStreamPlayer2D.play()
 
 func _on_play_button_pressed():
     get_tree().change_scene_to_packed(play_scene)

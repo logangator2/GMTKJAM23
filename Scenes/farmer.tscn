@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5h37bpqpjlmn"]
+[gd_scene load_steps=6 format=3 uid="uid://b5h37bpqpjlmn"]
 
 [ext_resource type="Script" path="res://Scripts/farmer.gd" id="1_ulkul"]
 [ext_resource type="Texture2D" uid="uid://r4va1gbx1ffe" path="res://Assets/farmer/farmer/Layer 1_sprite_1.png" id="1_upchx"]
 [ext_resource type="Texture2D" uid="uid://bf1gir6f5be5r" path="res://Assets/farmer/farmer/Layer 1_sprite_2.png" id="2_si2rs"]
+[ext_resource type="AudioStream" uid="uid://du8iijfo1c5s8" path="res://Assets/516243__wyronroberth__grab-havest-01.mp3" id="4_lplok"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7fuhd"]
 animations = [{
@@ -25,3 +26,6 @@ script = ExtResource("1_ulkul")
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_7fuhd")
 frame_progress = 0.27419
+
+[node name="UprootAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lplok")
