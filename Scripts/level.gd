@@ -55,4 +55,3 @@ func _ready():
 	set_player_start()
 	for i in range(4):
 		spawn_level_crops()
-

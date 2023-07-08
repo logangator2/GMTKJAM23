@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ydu4ub55ym0q"]
+
+[ext_resource type="Texture2D" uid="uid://bcklt6ip40kuo" path="res://Assets/kenney_pixel-platformer-farm-expansion/Tiles/tile_0059.png" id="1_kd3rk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5oyp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kd3rk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Crop" type="Node2D"]
+z_index = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, -32)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_f5oyp")

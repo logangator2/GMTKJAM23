@@ -15,6 +15,7 @@ animations = [{
 }]
 
 [node name="Player" type="Node2D"]
+z_index = 2
 position = Vector2(32, -32)
 script = ExtResource("1_s64ir")
 
