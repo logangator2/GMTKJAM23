@@ -10,8 +10,13 @@ var tile_size : int = 64
 @export var player_scene: PackedScene
 @export var crop_scene: PackedScene
 @export var farmer_scene: PackedScene
+@export var highlight_scene: PackedScene
 
 var occupied_spaces : Array = []
+var plant_spaces : Array = []
+
+var plant_callable
+var place_callable
 
 func set_player_start():
 	var foreground_cells : Array = tiles.get_used_cells(1)
@@ -30,6 +35,7 @@ func set_player_start():
 			player.transform.origin = Vector2((player_x * tile_size) + int(tile_size/2), (player_y * tile_size) + int(tile_size/2))
 			add_child(player)
 			occupied_spaces.append(player_possible_coord)
+			plant_spaces.append(player_possible_coord)
 			spawned = true
 		else:
 			print("try again player")
@@ -75,10 +81,42 @@ func spawn_level_farmer():
 			occupied_spaces.append(farmer_possible_coord)
 		else:
 			print("try again farmer")
+
+func spawn_highlight(highlight_coord : Vector2i):
+	var highlight = highlight_scene.instantiate()
+	var highlight_x = highlight_coord.x
+	var highlight_y = highlight_coord.y
+	highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
+	add_child(highlight)
+	
+	
+func plant_action():
+	var foreground_cells : Array = tiles.get_used_cells(1)
+	var direction_vectors = [
+		Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1),
+		Vector2i(-1,0), 				Vector2i(1,0),
+		Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
+	print("actually planting!")
+	var eligible_spaces : Array = []
+	print(plant_spaces)
+	for plant_i in plant_spaces:
+		for direction_j in direction_vectors:
+			var is_dirt : bool = tiles.get_cell_tile_data(0, plant_i).get_custom_data("dirt")
+			var potential_space = plant_i + direction_j
+			if (potential_space not in foreground_cells) and is_dirt and (potential_space not in occupied_spaces):
+				eligible_spaces.append(potential_space)
+	for space in eligible_spaces:
+		spawn_highlight(space)
+		
+func place_plant(clicked_coord : Vector2i):
 	pass
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	plant_callable = Callable(self, "plant_action")
+	place_callable = Callable(self, "place_plant")
+	
 	set_player_start()
 	for i in range(4):
 		spawn_level_crops()
