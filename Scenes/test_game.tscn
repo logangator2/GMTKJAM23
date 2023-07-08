@@ -1,10 +1,124 @@
-[gd_scene load_steps=3 format=3 uid="uid://docxdbgt20lqc"]
+[gd_scene load_steps=4 format=3 uid="uid://docxdbgt20lqc"]
 
+[ext_resource type="Script" path="res://Scripts/test_game.gd" id="1_c4b1s"]
 [ext_resource type="PackedScene" uid="uid://crb3jtsn0hcmc" path="res://Scenes/in_game_ui.tscn" id="1_hvpg1"]
 [ext_resource type="PackedScene" uid="uid://cj2g7ev1pnv21" path="res://Scenes/test_tilemap.tscn" id="2_avd2d"]
 
-[node name="test_game" type="Node2D"]
-
-[node name="in_game_ui" parent="." instance=ExtResource("1_hvpg1")]
+[node name="test_game" type="Node2D" node_paths=PackedStringArray("Action_1", "Action_2", "Action_3")]
+script = ExtResource("1_c4b1s")
+Action_1 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_1")
+Action_2 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_2")
+Action_3 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_3")
 
 [node name="test_tilemap" parent="." instance=ExtResource("2_avd2d")]
+top_level = true
+
+[node name="in_game_ui" parent="." instance=ExtResource("1_hvpg1")]
+script = null
+
+[node name="UIBackground" type="ColorRect" parent="in_game_ui"]
+top_level = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -128.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.54902, 0.54902, 0.54902, 1)
+
+[node name="GameUI" type="Control" parent="in_game_ui/UIBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -45.0
+offset_right = 550.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+
+[node name="RightCenterContainer" type="CenterContainer" parent="in_game_ui/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="in_game_ui/UIBackground/GameUI/RightCenterContainer"]
+layout_mode = 2
+
+[node name="EndTurnButton" type="Button" parent="in_game_ui/UIBackground/GameUI/RightCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "End Turn
+"
+
+[node name="CenterCenterContainer" type="CenterContainer" parent="in_game_ui/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -15.5
+offset_right = 110.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer"]
+layout_mode = 2
+
+[node name="Action_1" type="Button" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 1"
+
+[node name="Action_2" type="Button" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 2
+"
+
+[node name="Action_3" type="Button" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 3"
+
+[node name="LeftCenterContainer" type="CenterContainer" parent="in_game_ui/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="in_game_ui/UIBackground/GameUI/LeftCenterContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="in_game_ui/UIBackground/GameUI/LeftCenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "..."
+
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/RightCenterContainer/HBoxContainer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_1" to="." method="_on_action_1_pressed"]
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_2" to="." method="_on_action_2_pressed"]
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_3" to="." method="_on_action_3_pressed"]
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/LeftCenterContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

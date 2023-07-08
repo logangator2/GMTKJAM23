@@ -49,8 +49,10 @@ func spawn_level_crops():
 		else:
 			print("try again crop")
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_player_start()
 	for i in range(4):
 		spawn_level_crops()
+
