@@ -43,28 +43,29 @@ func _process(delta):
 			print("try again player")
 			
 
-func spawn_level_crops():
-	var foreground_cells : Array = tiles.get_used_cells(1)
-	var crop = crop_scene.instantiate()
-	
 
-	var spawned : bool = false
-	while !spawned:
-		var crop_x : int = randi_range(1, map_width - 3)
-		var crop_y : int = randi_range(1, map_height - 3)
-		
-		var crop_possible_coord = Vector2i(crop_x, crop_y)
-		var is_dirt : bool = tiles.get_cell_tile_data(0, crop_possible_coord).get_custom_data("dirt")
-		if (not crop_possible_coord in foreground_cells) and is_dirt:
-			crop.transform.origin = Vector2((crop_x * tile_size) + int(tile_size/2), (crop_y * tile_size) + int(tile_size/2))
-			add_child(crop)
-			spawned = true
-		else:
-			print("try again crop")
+func spawn_level_crops():
+    var foreground_cells : Array = tiles.get_used_cells(1)
+    var crop = crop_scene.instantiate()
+    
+
+    var spawned : bool = false
+    while !spawned:
+        var crop_x : int = randi_range(1, map_width - 3)
+        var crop_y : int = randi_range(1, map_height - 3)
+        
+        var crop_possible_coord = Vector2i(crop_x, crop_y)
+        var is_dirt : bool = tiles.get_cell_tile_data(0, crop_possible_coord).get_custom_data("dirt")
+        if (not crop_possible_coord in foreground_cells) and is_dirt:
+            crop.transform.origin = Vector2((crop_x * tile_size) + int(tile_size/2), (crop_y * tile_size) + int(tile_size/2))
+            add_child(crop)
+            spawned = true
+        else:
+            print("try again crop")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_player_start()
-	for i in range(4):
-		spawn_level_crops()
+    set_player_start()
+    for i in range(4):
+        spawn_level_crops()
