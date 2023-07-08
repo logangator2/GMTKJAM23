@@ -115,9 +115,47 @@ layout_mode = 2
 layout_mode = 2
 text = "..."
 
+[node name="InstructionContainer" type="CenterContainer" parent="in_game_ui"]
+top_level = true
+z_index = 100
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.0
+offset_top = -204.5
+offset_right = 391.0
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="in_game_ui/InstructionContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="in_game_ui/InstructionContainer/VBoxContainer"]
+layout_mode = 2
+text = "You are the invasive species!"
+
+[node name="Label2" type="Label" parent="in_game_ui/InstructionContainer/VBoxContainer"]
+layout_mode = 2
+text = "1. To win, Eat all of the Farmer's crops.
+
+2. Be careful! If the Farmer moves to a spcae where your weeds are, the Farmer will uproot them! 
+Use the Protect action to prevent your weeds from getting pulled. If all your weeds get pulled,
+you lose!
+
+3. Use the action buttons below to Plant, Protect, or Eat with your Weeds. Each button can be pressed
+once per turn.
+
+4. Click End Turn when you are finished pressing any buttons you want to use this turn."
+
 [node name="PauseMenuContainer" type="CenterContainer" parent="in_game_ui"]
 visible = false
 top_level = true
+z_index = 101
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -135,6 +173,10 @@ size_flags_vertical = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="in_game_ui/PauseMenuContainer"]
 layout_mode = 2
 
+[node name="HelpButton" type="Button" parent="in_game_ui/PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Help"
+
 [node name="QuitButton" type="Button" parent="in_game_ui/PauseMenuContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
@@ -148,5 +190,6 @@ text = "Cancel"
 [connection signal="pressed" from="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_2" to="." method="_on_action_2_pressed"]
 [connection signal="pressed" from="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_3" to="." method="_on_action_3_pressed"]
 [connection signal="pressed" from="in_game_ui/UIBackground/GameUI/LeftCenterContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="in_game_ui/PauseMenuContainer/VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="in_game_ui/PauseMenuContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="in_game_ui/PauseMenuContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
