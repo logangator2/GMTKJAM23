@@ -7,7 +7,7 @@ script = ExtResource("1_jcwsq")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1280.0
-offset_bottom = 640.0
+offset_bottom = 768.0
 
 [node name="UIBackground" type="ColorRect" parent="Background"]
 top_level = true
