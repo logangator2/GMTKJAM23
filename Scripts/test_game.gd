@@ -12,6 +12,7 @@ var action_3_used = false
 @export var Action_1:Button
 @export var Action_2:Button
 @export var Action_3:Button
+@export var main_menu:PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -91,7 +92,15 @@ func _on_action_3_pressed():
     if Action_3.text == "Eat":
         pass
 
+# Handles pause/settings menu
 func _on_settings_button_pressed():
-    # open menu
-    # offer quit and main menu
-    pass # Replace with function body.
+    # Open menu
+    $in_game_ui/PauseMenuContainer.show()
+
+# Hides the pause menu
+func _on_cancel_button_pressed():
+    $in_game_ui/PauseMenuContainer.hide()
+
+# Handles quitting the game
+func _on_quit_button_pressed():
+    get_tree().quit()
