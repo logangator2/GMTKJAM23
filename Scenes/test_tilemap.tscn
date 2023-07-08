@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://cj2g7ev1pnv21"]
+[gd_scene load_steps=14 format=3 uid="uid://cj2g7ev1pnv21"]
 
 [ext_resource type="Texture2D" uid="uid://c6lcckuvj4c2p" path="res://Assets/kenney_tiny-town/Tilemap/tilemap_packed.png" id="1_m0y21"]
-[ext_resource type="Script" path="res://Scripts/test_tilemap.gd" id="1_wb027"]
 [ext_resource type="Texture2D" uid="uid://x5af1fhixble" path="res://Assets/kenney_roguelike-rpg-pack/Spritesheet/roguelikeSheet_transparent.png" id="2_n1kvg"]
 [ext_resource type="Texture2D" uid="uid://fbf3oo7hm8v7" path="res://Assets/kenney_input-prompts-pixel-16/Tilemap/tilemap_packed.png" id="3_1usuq"]
 [ext_resource type="Texture2D" uid="uid://db4ki2qss8idc" path="res://Assets/kenney_pixel-platformer/Tilemap/tiles_packed.png" id="4_brb1w"]
@@ -2837,7 +2836,6 @@ sources/4 = SubResource("TileSetAtlasSource_1ob40")
 sources/5 = SubResource("TileSetAtlasSource_u56hu")
 
 [node name="test_tilemap" type="Node2D"]
-script = ExtResource("1_wb027")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_right = 1280.0

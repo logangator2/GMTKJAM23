@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://crb3jtsn0hcmc"]
+[gd_scene load_steps=2 format=3 uid="uid://crb3jtsn0hcmc"]
+
+[ext_resource type="Script" path="res://Scripts/in_game_ui.gd" id="1_jcwsq"]
 
 [node name="in_game_ui" type="Node2D"]
+script = ExtResource("1_jcwsq")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1280.0
-offset_bottom = 720.0
+offset_bottom = 640.0
 
 [node name="UIBackground" type="ColorRect" parent="Background"]
 top_level = true
@@ -36,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 
-[node name="CenterContainer" type="CenterContainer" parent="Background/UIBackground/GameUI"]
+[node name="RightCenterContainer" type="CenterContainer" parent="Background/UIBackground/GameUI"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -49,16 +52,49 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/UIBackground/GameUI/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/UIBackground/GameUI/RightCenterContainer"]
 layout_mode = 2
 
-[node name="EndTurnButton" type="Button" parent="Background/UIBackground/GameUI/CenterContainer/HBoxContainer"]
+[node name="EndTurnButton" type="Button" parent="Background/UIBackground/GameUI/RightCenterContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "End Turn
 "
 
-[node name="CenterContainer2" type="CenterContainer" parent="Background/UIBackground/GameUI"]
+[node name="CenterCenterContainer" type="CenterContainer" parent="Background/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -15.5
+offset_right = 110.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/UIBackground/GameUI/CenterCenterContainer"]
+layout_mode = 2
+
+[node name="Action 1" type="Button" parent="Background/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 1"
+
+[node name="Action 2" type="Button" parent="Background/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 2
+"
+
+[node name="Action 3" type="Button" parent="Background/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 3"
+
+[node name="LeftCenterContainer" type="CenterContainer" parent="Background/UIBackground/GameUI"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -68,9 +104,12 @@ offset_right = 40.0
 offset_bottom = 20.0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/UIBackground/GameUI/CenterContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/UIBackground/GameUI/LeftCenterContainer"]
 layout_mode = 2
 
-[node name="SettingsButton" type="Button" parent="Background/UIBackground/GameUI/CenterContainer2/HBoxContainer"]
+[node name="SettingsButton" type="Button" parent="Background/UIBackground/GameUI/LeftCenterContainer/HBoxContainer"]
 layout_mode = 2
 text = "..."
+
+[connection signal="pressed" from="Background/UIBackground/GameUI/RightCenterContainer/HBoxContainer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="Background/UIBackground/GameUI/LeftCenterContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
