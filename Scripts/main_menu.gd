@@ -12,7 +12,6 @@ func _process(delta):
 
 func _on_play_button_pressed():
     get_tree().change_scene_to_packed(play_scene)
-    pass
 
 func _on_quit_button_pressed():
     get_tree().quit()
