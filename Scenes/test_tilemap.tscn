@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cj2g7ev1pnv21"]
+[gd_scene load_steps=18 format=3 uid="uid://cj2g7ev1pnv21"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_4huib"]
 [ext_resource type="Texture2D" uid="uid://c6lcckuvj4c2p" path="res://Assets/kenney_tiny-town/Tilemap/tilemap_packed.png" id="1_m0y21"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://fbf3oo7hm8v7" path="res://Assets/kenney_input-prompts-pixel-16/Tilemap/tilemap_packed.png" id="3_1usuq"]
 [ext_resource type="PackedScene" uid="uid://ydu4ub55ym0q" path="res://Scenes/crop.tscn" id="3_8u6mp"]
 [ext_resource type="Texture2D" uid="uid://db4ki2qss8idc" path="res://Assets/kenney_pixel-platformer/Tilemap/tiles_packed.png" id="4_brb1w"]
+[ext_resource type="PackedScene" uid="uid://b5h37bpqpjlmn" path="res://Scenes/farmer.tscn" id="4_mg0sg"]
 [ext_resource type="Texture2D" uid="uid://doxaqg4gk2qom" path="res://Assets/kenney_pixel-platformer-farm-expansion/Tilemap/tilemap_packed.png" id="5_o0ngm"]
 [ext_resource type="Texture2D" uid="uid://bj13infu78cy" path="res://Assets/kenney_pixel-platformer/Tilemap/characters_packed.png" id="6_fqy0s"]
 
@@ -2858,6 +2859,7 @@ script = ExtResource("1_4huib")
 tiles = NodePath("tiles")
 player_scene = ExtResource("2_6jepq")
 crop_scene = ExtResource("3_8u6mp")
+farmer_scene = ExtResource("4_mg0sg")
 
 [node name="tiles" type="TileMap" parent="."]
 scale = Vector2(4, 4)

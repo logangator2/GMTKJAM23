@@ -58,7 +58,8 @@ func _on_end_turn_button_pressed():
     # Increment turn counter
     print("Turn Ended")
     turn_counter += 1
-    # TODO: Trigger farmer actions
+    # Trigger farmer actions
+    get_child(1, true).get_child(6, true).farmer_start()
     # Call new turn
     new_turn()
 
