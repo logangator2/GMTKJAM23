@@ -2858,13 +2858,7 @@ script = ExtResource("1_4huib")
 player_scene = ExtResource("2_6jepq")
 crop_scene = ExtResource("3_8u6mp")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_right = 1280.0
-offset_bottom = 640.0
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 10
-
-[node name="tiles" type="TileMap" parent="GridContainer"]
+[node name="tiles" type="TileMap" parent="."]
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_j4sw8")
 format = 2
