@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwsa1uuooa1q5"]
+[gd_scene load_steps=5 format=3 uid="uid://cwsa1uuooa1q5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s64ir"]
 [ext_resource type="Texture2D" uid="uid://bdyucnm2ipwlo" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0125.png" id="2_nsyp1"]
+[ext_resource type="AudioStream" uid="uid://j3oeb4sahuaf" path="res://Assets/390351__josethehedgehog__choque-contra-helecho.wav" id="3_y87bw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_55wci"]
 animations = [{
@@ -22,3 +23,6 @@ script = ExtResource("1_s64ir")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_55wci")
+
+[node name="PlantingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_y87bw")
