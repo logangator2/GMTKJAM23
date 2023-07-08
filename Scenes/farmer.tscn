@@ -24,4 +24,5 @@ script = ExtResource("1_ulkul")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_7fuhd")
-frame_progress = 0.27419
+frame = 1
+frame_progress = 0.672259
