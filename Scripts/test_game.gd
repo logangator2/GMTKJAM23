@@ -89,7 +89,7 @@ func _on_action_2_pressed():
 		get_child(1, true).get_child(1, true).plant()
 		
 	if Action_2.text == "Protect":
-		get_child(1, true).get_child(1, true).protect()
+		get_child(1,true).get_child(1,true).protect()
 		
 	if Action_2.text == "Eat":
 		get_child(1, true).get_child(1, true).eat()
@@ -102,7 +102,7 @@ func _on_action_3_pressed():
 		get_child(1, true).get_child(1, true).plant()
 		
 	if Action_3.text == "Protect":
-		get_child(1, true).get_child(1, true).protect()
+		get_child(1,true).get_child(1,true).protect()
 		
 	if Action_3.text == "Eat":
 		get_child(1, true).get_child(1, true).eat()
