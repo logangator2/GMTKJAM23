@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://rcws6qjeul7s"]
 
-[ext_resource type="Texture2D" uid="uid://bt0fm5gmlxq3j" path="res://Assets/kenney_roguelike-rpg-pack/Spritesheet/roguelikeChar_transparent.png" id="1_tndvw"]
+[ext_resource type="Texture2D" uid="uid://bluevg2hns82w" path="res://Assets/kenney_roguelike-rpg-pack/Spritesheet/roguelikeChar_transparent.png" id="1_tndvw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bkgpi"]
 texture = ExtResource("1_tndvw")
