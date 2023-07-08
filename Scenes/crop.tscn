@@ -16,9 +16,9 @@ animations = [{
 
 [node name="Crop" type="Node2D" groups=["crop"]]
 z_index = 2
+position = Vector2(32, -32)
+scale = Vector2(4, 4)
 script = ExtResource("1_qyo3p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(32, -32)
-scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_f5oyp")

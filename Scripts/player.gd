@@ -1,14 +1,19 @@
 extends Node2D
 
+signal plant_sig
+
 func plant():
-    print("planting!")
+	print("planting!")
+	plant_sig.emit()
 
 func protect():
-    print("protecting!")
-
+	print("protecting!")
+	
 func eat():
-    print("eating!")
-
+	print("eating!")
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    print(transform)
+	print(get_node("/root/test_game/test_tilemap").plant_callable)
+	plant_sig.connect(get_node("/root/test_game/test_tilemap").plant_callable)
+	print(transform)
