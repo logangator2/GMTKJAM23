@@ -9,8 +9,8 @@ var plant_coord : Vector2i
 var resiliance : int = 1
 
 func plant():
-    print("planting!")
-    plant_sig.emit()
+	print("planting!")
+	plant_sig.emit()
 
 func protect():
     print("protecting!")
@@ -21,7 +21,7 @@ func eat():
     
 func play_sound():
     $PlantingAudio.play()
-    
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     print(get_node("/root/test_game/test_tilemap").plant_callable)
