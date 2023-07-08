@@ -9,6 +9,7 @@ var tile_size : int = 64
 
 @export var player_scene: PackedScene
 @export var crop_scene: PackedScene
+@export var farmer_scene: PackedScene
 
 func set_player_start():
     var foreground_cells : Array = tiles.get_used_cells(1)
@@ -51,9 +52,29 @@ func spawn_level_crops():
         else:
             print("try again crop")
 
+# Spawns farmer in an area that is unoccupied
+func spawn_level_farmer():
+    var foreground_cells : Array = tiles.get_used_cells(1)
+    var farmer = farmer_scene.instantiate()
+    var spawned : bool = false
+    
+    while !spawned:
+        var farmer_x : int = randi_range(1, map_width - 3)
+        var farmer_y : int = randi_range(1, map_height - 3)
+        
+        var farmer_possible_coord = Vector2i(farmer_x, farmer_y)
+        var is_dirt : bool = tiles.get_cell_tile_data(0, farmer_possible_coord).get_custom_data("dirt")
+        if (not farmer_possible_coord in foreground_cells) and is_dirt:
+            farmer.transform.origin = Vector2((farmer_x * tile_size) + int(tile_size/2), (farmer_y * tile_size) + int(tile_size/2))
+            add_child(farmer)
+            spawned = true
+        else:
+            print("try again farmer")
+    pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     set_player_start()
     for i in range(4):
         spawn_level_crops()
+    spawn_level_farmer()
