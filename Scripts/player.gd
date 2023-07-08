@@ -4,10 +4,10 @@ func plant():
     print("planting!")
 
 func protect():
-    pass
+	print("protecting!")
 
 func eat():
-    pass
+	print("eating!")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

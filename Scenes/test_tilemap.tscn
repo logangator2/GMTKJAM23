@@ -2853,8 +2853,9 @@ sources/3 = SubResource("TileSetAtlasSource_hb2l5")
 sources/4 = SubResource("TileSetAtlasSource_1ob40")
 sources/5 = SubResource("TileSetAtlasSource_u56hu")
 
-[node name="test_tilemap" type="Node2D"]
+[node name="test_tilemap" type="Node2D" node_paths=PackedStringArray("tiles")]
 script = ExtResource("1_4huib")
+tiles = NodePath("tiles")
 player_scene = ExtResource("2_6jepq")
 crop_scene = ExtResource("3_8u6mp")
 

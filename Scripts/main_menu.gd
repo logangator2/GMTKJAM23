@@ -8,10 +8,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    pass
+	pass
 
 func _on_play_button_pressed():
-    get_tree().change_scene_to_packed(play_scene)
+	get_tree().change_scene_to_packed(play_scene)
 
 func _on_quit_button_pressed():
-    get_tree().quit()
+	get_tree().quit()
