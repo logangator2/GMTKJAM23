@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2ge8jda4oxjw"]
+
+[ext_resource type="Script" path="res://Scenes/protect_highlight.gd" id="1_hop8o"]
+[ext_resource type="Texture2D" uid="uid://rijbuf3nxkd1" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0038.png" id="2_v1o0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h20xx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tpww1"]
+
+[sub_resource type="Theme" id="Theme_robyk"]
+Button/colors/font_focus_color = Color(0.94902, 0.94902, 0.94902, 0)
+Button/colors/font_hover_color = Color(0.94902, 0.94902, 0.94902, 0)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/font_outline_color = Color(1, 1, 1, 0)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0)
+Button/colors/icon_focus_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
+Button/constants/h_separation = 0
+Button/styles/focus = SubResource("StyleBoxEmpty_h20xx")
+Button/styles/pressed = SubResource("StyleBoxEmpty_tpww1")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t0rcl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v1o0d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="highlight" type="Node2D" groups=["highlight"]]
+z_index = 5
+position = Vector2(32, -32)
+scale = Vector2(4, 4)
+script = ExtResource("1_hop8o")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+theme = SubResource("Theme_robyk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+scale = Vector2(0.91, 0.91)
+sprite_frames = SubResource("SpriteFrames_t0rcl")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

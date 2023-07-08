@@ -88,29 +88,29 @@ func _on_action_1_pressed():
         get_child(1, true).get_child(1, true).eat()
 
 func _on_action_2_pressed():
-    print(Action_2.text)
-    action_2_used = true
-    if Action_2.text == "Plant":
-        get_child(1, true).get_child(1, true).plant()
-        
-    if Action_2.text == "Protect":
-        get_child(1, true).get_child(1, true).protect()
-        
-    if Action_2.text == "Eat":
-        get_child(1, true).get_child(1, true).eat()
-        
+	print(Action_2.text)
+	action_2_used = true
+	if Action_2.text == "Plant":
+		get_child(1, true).get_child(1, true).plant()
+		
+	if Action_2.text == "Protect":
+		get_child(1,true).get_child(1,true).protect()
+		
+	if Action_2.text == "Eat":
+		get_child(1, true).get_child(1, true).eat()
+		
 
 func _on_action_3_pressed():
-    print(Action_3.text)
-    action_3_used = true
-    if Action_3.text == "Plant":
-        get_child(1, true).get_child(1, true).plant()
-        
-    if Action_3.text == "Protect":
-        get_child(1, true).get_child(1, true).protect()
-        
-    if Action_3.text == "Eat":
-        get_child(1, true).get_child(1, true).eat()
+	print(Action_3.text)
+	action_3_used = true
+	if Action_3.text == "Plant":
+		get_child(1, true).get_child(1, true).plant()
+		
+	if Action_3.text == "Protect":
+		get_child(1,true).get_child(1,true).protect()
+		
+	if Action_3.text == "Eat":
+		get_child(1, true).get_child(1, true).eat()
 
 # Handles pause/settings menu
 func _on_settings_button_pressed():

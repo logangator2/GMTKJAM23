@@ -11,12 +11,15 @@ var tile_size : int = 64
 @export var crop_scene: PackedScene
 @export var farmer_scene: PackedScene
 @export var highlight_scene: PackedScene
+@export var protect_highlight_scene: PackedScene
 
 var occupied_spaces : Array = []
 var plant_spaces : Array = []
 
 var plant_callable
 var place_callable
+var protect_callable
+var fortify_callable
 
 func set_player_start():
     var foreground_cells : Array = tiles.get_used_cells(1)
@@ -84,13 +87,19 @@ func spawn_level_farmer():
             print("try again farmer")
 
 func spawn_highlight(highlight_coord : Vector2i):
-    var highlight = highlight_scene.instantiate()
-    var highlight_x = highlight_coord.x
-    var highlight_y = highlight_coord.y
-    highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
-    add_child(highlight)
-    
-    
+	var highlight = highlight_scene.instantiate()
+	var highlight_x = highlight_coord.x
+	var highlight_y = highlight_coord.y
+	highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
+	add_child(highlight)
+	
+func spawn_protect_highlight(highlight_coord : Vector2i):
+	var highlight = protect_highlight_scene.instantiate()
+	var highlight_x = highlight_coord.x
+	var highlight_y = highlight_coord.y
+	highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
+	add_child(highlight)
+	
 func plant_action():
     var foreground_cells : Array = tiles.get_used_cells(1)
     var direction_vectors = [
@@ -111,24 +120,39 @@ func plant_action():
 
 
 func place_plant(new_location : Vector2i):
-    print("hello plant eligible tile")
-    var new_plant = player_scene.instantiate()
-    var new_plant_x = new_location.x
-    var new_plant_y = new_location.y
-    new_plant.transform.origin = Vector2((new_plant_x * tile_size) + int(tile_size/2), (new_plant_y * tile_size) + int(tile_size/2))
-    add_child(new_plant)
-    occupied_spaces.append(new_location)
-    plant_spaces.append(new_location)
-    
-    for highlight in get_tree().get_nodes_in_group("highlight"):
-        highlight.queue_free()
+	print("hello plant eligible tile")
+	var new_plant = player_scene.instantiate()
+	var new_plant_x = new_location.x
+	var new_plant_y = new_location.y
+	new_plant.transform.origin = Vector2((new_plant_x * tile_size) + int(tile_size/2), (new_plant_y * tile_size) + int(tile_size/2))
+	add_child(new_plant)
+	occupied_spaces.append(new_location)
+	plant_spaces.append(new_location)
+	
+	for highlight in get_tree().get_nodes_in_group("highlight"):
+		highlight.queue_free()
+		
+
+func protect_plant(plant_location : Vector2i):
+	for plant in get_tree().get_nodes_in_group("player"):
+		if plant.plant_coord == plant_location:
+			plant.resiliance += 1
+	
+	for highlight in get_tree().get_nodes_in_group("highlight"):
+		highlight.queue_free()
+
+func protect_action():
+	for plant in plant_spaces:
+		spawn_protect_highlight(plant)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    plant_callable = Callable(self, "plant_action")
-    place_callable = Callable(self, "place_plant")
-    
-    set_player_start()
-    for i in range(4):
-        spawn_level_crops()
-    spawn_level_farmer()
+	plant_callable = Callable(self, "plant_action")
+	place_callable = Callable(self, "place_plant")
+	protect_callable = Callable(self, "protect_action")
+	fortify_callable = Callable(self, "protect_plant")
+	
+	set_player_start()
+	for i in range(4):
+		spawn_level_crops()
+	spawn_level_farmer()
