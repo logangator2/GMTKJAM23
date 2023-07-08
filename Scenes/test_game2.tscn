@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ovamm1046h7m"]
+[gd_scene load_steps=4 format=3 uid="uid://ovamm1046h7m"]
 
 [ext_resource type="Script" path="res://Scripts/test_game.gd" id="1_fi6og"]
 [ext_resource type="PackedScene" uid="uid://cj2g7ev1pnv21" path="res://Scenes/test_tilemap.tscn" id="2_nj7h2"]
-[ext_resource type="PackedScene" uid="uid://bj6qa6sy16656" path="res://Scenes/main_menu.tscn" id="3_4n1cq"]
 [ext_resource type="PackedScene" uid="uid://crb3jtsn0hcmc" path="res://Scenes/in_game_ui.tscn" id="3_4433h"]
 
 [node name="test_game" type="Node2D" node_paths=PackedStringArray("Action_1", "Action_2", "Action_3")]
@@ -11,7 +10,6 @@ map_scene = ExtResource("2_nj7h2")
 Action_1 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_1")
 Action_2 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_2")
 Action_3 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_3")
-main_menu = ExtResource("3_4n1cq")
 
 [node name="in_game_ui" parent="." instance=ExtResource("3_4433h")]
 script = null

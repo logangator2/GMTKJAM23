@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj6qa6sy16656"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_8nnor"]
-[ext_resource type="PackedScene" uid="uid://docxdbgt20lqc" path="res://Scenes/test_game.tscn" id="2_d0q20"]
+[ext_resource type="PackedScene" uid="uid://ovamm1046h7m" path="res://Scenes/test_game2.tscn" id="2_7kdw8"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_8nnor")
-play_scene = ExtResource("2_d0q20")
+play_scene = ExtResource("2_7kdw8")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 color = Color(0.328326, 0.545378, 0.587545, 1)
