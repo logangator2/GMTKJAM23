@@ -72,12 +72,10 @@ func spawn_level_farmer():
 			farmer.transform.origin = Vector2((farmer_x * tile_size) + int(tile_size/2), (farmer_y * tile_size) + int(tile_size/2))
 			add_child(farmer)
 			spawned = true
-      farmer.get_coords(farmer_possible_coord)
 			occupied_spaces.append(farmer_possible_coord)
 		else:
 			print("try again farmer")
 	pass
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
