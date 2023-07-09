@@ -7,6 +7,8 @@ var tile_size : int = 64
 
 @export var tiles : TileMap
 
+@export var crop_amount = 4
+
 @export var player_scene: PackedScene
 @export var crop_scene: PackedScene
 @export var farmer_scene: PackedScene
@@ -214,7 +216,7 @@ func _ready():
     crop_callable = Callable(self, "eat_crop")
     
     set_player_start()
-    for i in range(4):
+    for i in range(crop_amount):
         spawn_level_crops()
     spawn_level_farmer()
 
