@@ -152,6 +152,7 @@ func protect_plant(plant_location : Vector2i):
 	for plant in get_tree().get_nodes_in_group("player"):
 		if plant.plant_coord == plant_location:
 			plant.resiliance += 1
+			plant.get_child(2).text ="+%d" % (plant.resiliance - 1)
 	
 	for highlight in get_tree().get_nodes_in_group("highlight"):
 		highlight.queue_free()
@@ -164,6 +165,10 @@ func farmer_attack(plant_location : Vector2i):
 	for plant in get_tree().get_nodes_in_group("player"):
 		if plant.plant_coord == plant_location:
 			plant.resiliance -= 1
+			if plant.resiliance > 1:
+				plant.get_child(2).text ="+%d" % (plant.resiliance - 1)
+			else:
+				plant.get_child(2).text = ""
 			
 			if plant.resiliance == 0:
 				occupied_spaces.erase(plant.plant_coord)
