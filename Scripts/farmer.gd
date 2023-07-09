@@ -85,11 +85,11 @@ func farmer_start():
 	tile_node.occupied_spaces.append(Vector2i(new_possible_location))
 		
 func get_coords(coordinates):
-	current_location = coordinates
-	
+    current_location = coordinates
+    
 func play_sound():
-	$UprootAudio.play()
+    $UprootAudio.play()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	killed_weed.connect(get_parent().attack_callable)
+    killed_weed.connect(get_parent().attack_callable)

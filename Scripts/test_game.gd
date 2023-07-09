@@ -34,18 +34,19 @@ func _ready():
 	Action_2.text = action_array[1]
 	Action_3.text = action_array[2]
 
+
 func _input(event):
-	if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and intruction_flag:
-		$in_game_ui/InstructionContainer.hide()
-		intruction_flag = false
-	if (Input.is_action_just_pressed("Mute")):
-		var bus_index = AudioServer.get_bus_index("Master")
-		AudioServer.set_bus_mute(bus_index, true)
+    if (Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and intruction_flag:
+        $in_game_ui/InstructionContainer.hide()
+        intruction_flag = false
+    if (Input.is_action_just_pressed("Mute")):
+        var bus_index = AudioServer.get_bus_index("Master")
+        AudioServer.set_bus_mute(bus_index, true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $in_game_ui/InstructionContainer/GameMusic.playing == false:
-		$in_game_ui/InstructionContainer/GameMusic.play()
+    if $in_game_ui/InstructionContainer/GameMusic.playing == false:
+        $in_game_ui/InstructionContainer/GameMusic.play()
 
 # Handle a new turn
 func new_turn():
@@ -70,15 +71,16 @@ func new_turn():
 	action_2_used = false
 	action_3_used = false
 
+
 # Handles when end turn button is pressed
 func _on_end_turn_button_pressed():
-	# Increment turn counter
-	print("Turn Ended")
-	turn_counter += 1
-	# Trigger farmer actions
-	get_tree().get_first_node_in_group("farmer").farmer_start()
-	# Call new turn
-	new_turn()
+    # Increment turn counter
+    print("Turn Ended")
+    turn_counter += 1
+    # Trigger farmer actions
+    get_tree().get_first_node_in_group("farmer").farmer_start()
+    # Call new turn
+    new_turn()
 
 func _on_action_1_pressed():
 	print(Action_1.text)
@@ -125,19 +127,19 @@ func _on_action_3_pressed():
 
 # Handles pause/settings menu
 func _on_settings_button_pressed():
-	# Open menu
-	$in_game_ui/PauseMenuContainer.show()
+    # Open menu
+    $in_game_ui/PauseMenuContainer.show()
 
 # Hides the pause menu
 func _on_cancel_button_pressed():
-	$in_game_ui/PauseMenuContainer.hide()
+    $in_game_ui/PauseMenuContainer.hide()
 
 # Handles quitting the game
 func _on_quit_button_pressed():
-	get_tree().quit()
+    get_tree().quit()
 
 # Displays instructions on how to play
 func _on_help_button_pressed():
-	intruction_flag = true
-	$in_game_ui/InstructionContainer.show()
-	$in_game_ui/PauseMenuContainer.hide()
+    intruction_flag = true
+    $in_game_ui/InstructionContainer.show()
+    $in_game_ui/PauseMenuContainer.hide()
