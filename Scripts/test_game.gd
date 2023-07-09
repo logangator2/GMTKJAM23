@@ -9,13 +9,11 @@ var action_array = ["Plant", "Plant", "Plant", "Plant", "Plant",
 
 var action_1_used = false
 var action_2_used = false
-var action_3_used = false
 
 @export var map_scene: PackedScene
 
 @export var Action_1:Button
 @export var Action_2:Button
-@export var Action_3:Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,7 +29,6 @@ func _ready():
     # Create Button Names
     Action_1.text = action_array[0]
     Action_2.text = action_array[1]
-    Action_3.text = action_array[2]
 
 
 func _input(event):
@@ -46,8 +43,6 @@ func _input(event):
         _on_action_1_pressed()
     if (Input.is_action_just_pressed("Action_2") and not Action_2.disabled):
         _on_action_2_pressed()
-    if (Input.is_action_just_pressed("Action_3") and not Action_3.disabled):
-        _on_action_3_pressed()
     if (Input.is_action_just_pressed("End_Turn")):
         _on_end_turn_button_pressed()
 
@@ -66,16 +61,13 @@ func new_turn():
     # Reset Button Names
     Action_1.text = action_array[0]
     Action_2.text = action_array[1]
-    Action_3.text = action_array[2]
     
     Action_1.disabled = false
     Action_2.disabled = false
-    Action_3.disabled = false
     
     # Reset Button Uses
     action_1_used = false
     action_2_used = false
-    action_3_used = false
 
 
 # Handles when end turn button is pressed
@@ -116,20 +108,6 @@ func _on_action_2_pressed():
         get_tree().get_first_node_in_group("crop").eat()
     
     Action_2.disabled = true		
-
-func _on_action_3_pressed():
-    print(Action_3.text)
-    action_3_used = true
-    if Action_3.text == "Plant":
-        get_tree().get_first_node_in_group("player").plant()
-        
-    if Action_3.text == "Protect":
-        get_tree().get_first_node_in_group("player").protect()
-        
-    if Action_3.text == "Eat":
-        get_tree().get_first_node_in_group("crop").eat()
-    
-    Action_3.disabled = true
 
 # Handles pause/settings menu
 func _on_settings_button_pressed():
