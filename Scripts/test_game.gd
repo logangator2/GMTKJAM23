@@ -43,6 +43,14 @@ func _input(event):
     if (Input.is_action_just_pressed("Mute")):
         var bus_index = AudioServer.get_bus_index("Master")
         AudioServer.set_bus_mute(bus_index, true)
+    if (Input.is_action_just_pressed("Action_1") and not Action_1.disabled):
+        _on_action_1_pressed()
+    if (Input.is_action_just_pressed("Action_2") and not Action_2.disabled):
+        _on_action_2_pressed()
+    if (Input.is_action_just_pressed("Action_3") and not Action_3.disabled):
+        _on_action_3_pressed()
+    if (Input.is_action_just_pressed("End_Turn")):
+        _on_end_turn_button_pressed()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -145,3 +153,8 @@ func _on_help_button_pressed():
     $in_game_ui/InstructionContainer.show()
     $in_game_ui/Tutorial.show()
     $in_game_ui/PauseMenuContainer.hide()
+
+
+func _on_mute_button_pressed():
+    var bus_index = AudioServer.get_bus_index("Master")
+    AudioServer.set_bus_mute(bus_index, true)
