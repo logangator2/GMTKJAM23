@@ -4,7 +4,7 @@ var turn_counter = 1
 
 var intruction_flag : bool = true
 
-var action_array = ["Plant", "Plant", "Plant", "Plant", "Protect", 
+var action_array = ["Plant", "Plant", "Plant", "Plant", "Plant", 
 "Protect", "Protect", "Protect", "Eat", "Eat"]
 
 var action_1_used = false
