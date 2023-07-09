@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bam641o4b7lba"]
+[gd_scene load_steps=5 format=3 uid="uid://bam641o4b7lba"]
 
 [ext_resource type="Script" path="res://Scripts/win_screen.gd" id="1_8i01t"]
 [ext_resource type="PackedScene" uid="uid://bj6qa6sy16656" path="res://Scenes/main_menu.tscn" id="2_nn8ei"]
+[ext_resource type="PackedScene" uid="uid://c50o5xoaafrf6" path="res://Scenes/test_game3.tscn" id="3_iunct"]
 [ext_resource type="AudioStream" uid="uid://cx44pbw23arpc" path="res://Assets/448274__henryrichard__sfx-success.wav" id="3_yd73m"]
 
 [node name="win" type="Node2D"]
 script = ExtResource("1_8i01t")
 main_scene = ExtResource("2_nn8ei")
+level_2 = ExtResource("3_iunct")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 color = Color(0.14902, 0.521569, 0, 1)
@@ -55,6 +57,14 @@ text = "You ate all the farmer's crops!"
 layout_mode = 2
 text = "Main Menu"
 
+[node name="Level2Button" type="Button" parent="TextureRect/MenuControl/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 2"
+
+[node name="Level3Button" type="Button" parent="TextureRect/MenuControl/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 3"
+
 [node name="QuitButton" type="Button" parent="TextureRect/MenuControl/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
@@ -63,4 +73,6 @@ text = "Quit"
 stream = ExtResource("3_yd73m")
 
 [connection signal="pressed" from="TextureRect/MenuControl/CenterContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="TextureRect/MenuControl/CenterContainer/VBoxContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="TextureRect/MenuControl/CenterContainer/VBoxContainer/Level3Button" to="." method="_on_level_3_button_pressed"]
 [connection signal="pressed" from="TextureRect/MenuControl/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
