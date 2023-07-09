@@ -9,8 +9,8 @@ var plant_coord : Vector2i
 var resiliance : int = 1
 
 func plant():
-    print("planting!")
-    plant_sig.emit()
+	print("planting!")
+	plant_sig.emit()
 
 func protect():
 	print("protecting!")

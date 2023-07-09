@@ -63,8 +63,8 @@ func farmer_start():
 				if i_new_possible_location == plant_location:
 					killed_weed.emit(plant_location)
 					print("emitted!")
-          if plant_spaces.size() == 0:
-              get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+					if plant_spaces.size() == 0:
+						get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 					current_location = new_possible_location
 					transform.origin = Vector2((new_possible_location[0] * tile_size) + int(tile_size/2),
 					(new_possible_location[1] * tile_size) + int(tile_size/2))
@@ -88,11 +88,11 @@ func farmer_start():
 	tile_node.occupied_spaces.append(Vector2i(new_possible_location))
 		
 func get_coords(coordinates):
-    current_location = coordinates
-    
+	current_location = coordinates
+	
 func play_sound():
-    $UprootAudio.play()
+	$UprootAudio.play()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    killed_weed.connect(get_parent().attack_callable)
+	killed_weed.connect(get_parent().attack_callable)
