@@ -17,3 +17,4 @@ func _ready():
 	crop_coord = Vector2i(vec2_coord)
 	crop_coord -= Vector2i(tile_size/2, tile_size/2)
 	crop_coord = crop_coord / Vector2i(tile_size, tile_size)
+
