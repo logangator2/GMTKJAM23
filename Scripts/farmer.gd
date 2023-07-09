@@ -7,6 +7,8 @@ var farmer_speed : int = 1
 
 var current_location : Vector2
 
+@onready var animation = $AnimatedSprite2D
+
 signal killed_weed
 
 func farmer_start():
@@ -113,6 +115,8 @@ func farmer_start():
                 moved = true
         else:
             print("Farmer trying to move again")
+    # play animation - here so he doesn't move until after player has moved
+    animation.play()
     tile_node.occupied_spaces.append(Vector2i(new_possible_location))
     biases.clear()
     print(biases)

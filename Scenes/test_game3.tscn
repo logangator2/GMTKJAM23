@@ -11,6 +11,7 @@
 [node name="test_game" type="Node2D" node_paths=PackedStringArray("Action_1", "Action_2")]
 script = ExtResource("1_vr8hd")
 map_scene = ExtResource("2_825ax")
+farmer_moves = 3
 Action_1 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_1")
 Action_2 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_2")
 

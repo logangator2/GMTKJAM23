@@ -12,6 +12,8 @@ var action_2_used = false
 
 @export var map_scene: PackedScene
 
+@export var farmer_moves = 1
+
 @export var Action_1:Button
 @export var Action_2:Button
 
@@ -76,7 +78,8 @@ func _on_end_turn_button_pressed():
     print("Turn Ended")
     turn_counter += 1
     # Trigger farmer actions
-    get_tree().get_first_node_in_group("farmer").farmer_start()
+    for i in range(farmer_moves):
+        get_tree().get_first_node_in_group("farmer").farmer_start()
     # Call new turn
     new_turn()
 
