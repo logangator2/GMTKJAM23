@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bam641o4b7lba"]
+[gd_scene load_steps=4 format=3 uid="uid://bam641o4b7lba"]
 
-[ext_resource type="Script" path="res://Scenes/win_screen.gd" id="1_8i01t"]
+[ext_resource type="Script" path="res://Scripts/win_screen.gd" id="1_8i01t"]
 [ext_resource type="PackedScene" uid="uid://bj6qa6sy16656" path="res://Scenes/main_menu.tscn" id="2_nn8ei"]
+[ext_resource type="AudioStream" uid="uid://cx44pbw23arpc" path="res://Assets/448274__henryrichard__sfx-success.wav" id="3_yd73m"]
 
 [node name="win" type="Node2D"]
 script = ExtResource("1_8i01t")
@@ -59,6 +60,7 @@ layout_mode = 2
 text = "Quit"
 
 [node name="WinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yd73m")
 
 [connection signal="pressed" from="TextureRect/MenuControl/CenterContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="TextureRect/MenuControl/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
