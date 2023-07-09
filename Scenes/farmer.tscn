@@ -25,7 +25,7 @@ script = ExtResource("1_ulkul")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_7fuhd")
-frame_progress = 0.27419
+frame_progress = 0.595936
 
 [node name="UprootAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_lplok")

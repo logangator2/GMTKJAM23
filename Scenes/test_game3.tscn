@@ -8,12 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bcklt6ip40kuo" path="res://Assets/kenney_pixel-platformer-farm-expansion/Tiles/tile_0059.png" id="6_whqlv"]
 [ext_resource type="Texture2D" uid="uid://bdyucnm2ipwlo" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0125.png" id="7_6k5k3"]
 
-[node name="test_game" type="Node2D" node_paths=PackedStringArray("Action_1", "Action_2", "Action_3")]
+[node name="test_game" type="Node2D" node_paths=PackedStringArray("Action_1", "Action_2")]
 script = ExtResource("1_vr8hd")
 map_scene = ExtResource("2_825ax")
+farmer_moves = 3
 Action_1 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_1")
 Action_2 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_2")
-Action_3 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_3")
 
 [node name="in_game_ui" parent="." instance=ExtResource("3_q1g0o")]
 script = null
@@ -98,6 +98,7 @@ text = "Action 2
 "
 
 [node name="Action_3" type="Button" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Action 3"
@@ -149,7 +150,7 @@ horizontal_alignment = 1
 [node name="Label2" type="Label" parent="in_game_ui/InstructionContainer/VBoxContainer"]
 z_index = 100
 layout_mode = 2
-text = "1. Each turn, you have three actions, shown in the action buttons at the bottom of the screen. 
+text = "1. Each turn, you have two actions, shown in the action buttons at the bottom of the screen. 
 You can press each button once per turn, and each turn, they are randomly generated.
 
 2. \"Plant\" allows you to place another weed adjacent to your other weeds.
