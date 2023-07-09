@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwsa1uuooa1q5"]
+[gd_scene load_steps=6 format=3 uid="uid://cwsa1uuooa1q5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s64ir"]
 [ext_resource type="Texture2D" uid="uid://bdyucnm2ipwlo" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0125.png" id="2_nsyp1"]
@@ -15,6 +15,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ckrsy"]
+font_size = 21
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Player" type="Node2D" groups=["player"]]
 z_index = 2
 position = Vector2(32, -32)
@@ -26,3 +31,12 @@ sprite_frames = SubResource("SpriteFrames_55wci")
 
 [node name="PlantingAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_y87bw")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 32.0
+label_settings = SubResource("LabelSettings_ckrsy")
+horizontal_alignment = 1
+vertical_alignment = 1

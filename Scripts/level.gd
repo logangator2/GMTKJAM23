@@ -149,28 +149,32 @@ func place_plant(new_location : Vector2i):
         
 
 func protect_plant(plant_location : Vector2i):
-    for plant in get_tree().get_nodes_in_group("player"):
-        if plant.plant_coord == plant_location:
-            plant.resiliance += 1
-    
-    for highlight in get_tree().get_nodes_in_group("highlight"):
-        highlight.queue_free()
+	for plant in get_tree().get_nodes_in_group("player"):
+		if plant.plant_coord == plant_location:
+			plant.resiliance += 1
+			plant.get_child(2).text ="+%d" % (plant.resiliance - 1)
+	
+	for highlight in get_tree().get_nodes_in_group("highlight"):
+		highlight.queue_free()
 
 func protect_action():
     for plant in plant_spaces:
         spawn_protect_highlight(plant)
         
 func farmer_attack(plant_location : Vector2i):
-    for plant in get_tree().get_nodes_in_group("player"):
-        if plant.plant_coord == plant_location:
-            plant.resiliance -= 1
-            
-            if plant.resiliance == 0:
-                occupied_spaces.erase(plant.plant_coord)
-                plant_spaces.erase(plant.plant_coord)
-                plant.queue_free()
-                get_tree().get_first_node_in_group("farmer").play_sound()
-    
+	for plant in get_tree().get_nodes_in_group("player"):
+		if plant.plant_coord == plant_location:
+			plant.resiliance -= 1
+			if plant.resiliance > 1:
+				plant.get_child(2).text ="+%d" % (plant.resiliance - 1)
+			else:
+				plant.get_child(2).text = ""
+			
+			if plant.resiliance == 0:
+				occupied_spaces.erase(plant.plant_coord)
+				plant_spaces.erase(plant.plant_coord)
+				plant.queue_free()
+				get_tree().get_first_node_in_group("farmer").play_sound()
 
 func eat_crop(crop_location : Vector2i):
     for crop in get_tree().get_nodes_in_group("crop"):
