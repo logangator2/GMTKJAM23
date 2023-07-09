@@ -77,8 +77,11 @@ func farmer_start():
 
 	while !moved:
 		var crop_flag : bool = false
-		var dir_idx : int = randi_range(0, good_directions.size() - 1)
-		new_possible_location = Vector2i(current_location) + good_directions[dir_idx]
+		if good_directions.size() == 0:
+			new_possible_location = Vector2i(current_location) + direction_vectors[randi_range(0, direction_vectors.size() - 1)]
+		else:
+			var dir_idx : int = randi_range(0, good_directions.size() - 1)
+			new_possible_location = Vector2i(current_location) + good_directions[dir_idx]
 
 		var is_dirt : bool = tiles.get_cell_tile_data(0, new_possible_location).get_custom_data("dirt")
 		if not new_possible_location in foreground_cells and is_dirt:

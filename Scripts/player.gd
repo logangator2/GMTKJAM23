@@ -16,7 +16,6 @@ func protect():
 	print("protecting!")
 	protect_sig.emit()
 	
-
 	
 func play_sound():
 	$PlantingAudio.play()

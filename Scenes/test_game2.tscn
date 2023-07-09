@@ -180,6 +180,7 @@ color = Color(0.0627451, 0.392157, 0.478431, 1)
 
 [node name="FarmerTut" type="Label" parent="in_game_ui/Tutorial"]
 z_index = 100
+layout_mode = 0
 offset_left = 32.0
 offset_top = 96.0
 offset_right = 121.0
@@ -201,6 +202,7 @@ texture = ExtResource("5_8wwhb")
 
 [node name="CropTut" type="Label" parent="in_game_ui/Tutorial"]
 z_index = 100
+layout_mode = 0
 offset_left = 32.0
 offset_top = 216.0
 offset_right = 182.0
@@ -221,6 +223,7 @@ texture = ExtResource("6_d5plh")
 
 [node name="Player Tut" type="Label" parent="in_game_ui/Tutorial"]
 z_index = 100
+layout_mode = 0
 offset_left = 32.0
 offset_top = 336.0
 offset_right = 124.0
