@@ -1,0 +1,307 @@
+[gd_scene load_steps=8 format=3 uid="uid://b66erxr0pqsva"]
+
+[ext_resource type="Script" path="res://Scripts/test_game.gd" id="1_lwfu8"]
+[ext_resource type="PackedScene" uid="uid://c41ffx0bndl54" path="res://Scenes/test_tilemap3.tscn" id="2_dyav7"]
+[ext_resource type="PackedScene" uid="uid://crb3jtsn0hcmc" path="res://Scenes/in_game_ui.tscn" id="3_2k2lq"]
+[ext_resource type="AudioStream" uid="uid://c8afplqel75ka" path="res://Assets/Short Retro Platformer Loop #1.mp3" id="4_2m2x0"]
+[ext_resource type="Texture2D" uid="uid://r4va1gbx1ffe" path="res://Assets/farmer/farmer/Layer 1_sprite_1.png" id="5_1gygx"]
+[ext_resource type="Texture2D" uid="uid://bcklt6ip40kuo" path="res://Assets/kenney_pixel-platformer-farm-expansion/Tiles/tile_0059.png" id="6_ui55a"]
+[ext_resource type="Texture2D" uid="uid://bdyucnm2ipwlo" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0125.png" id="7_abw03"]
+
+[node name="test_game" type="Node2D" node_paths=PackedStringArray("Action_1", "Action_2")]
+script = ExtResource("1_lwfu8")
+map_scene = ExtResource("2_dyav7")
+farmer_moves = 5
+Action_1 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_1")
+Action_2 = NodePath("in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_2")
+
+[node name="in_game_ui" parent="." instance=ExtResource("3_2k2lq")]
+script = null
+
+[node name="UIBackground" type="ColorRect" parent="in_game_ui"]
+top_level = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -128.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.54902, 0.54902, 0.54902, 1)
+
+[node name="GameUI" type="Control" parent="in_game_ui/UIBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -45.0
+offset_right = 550.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+
+[node name="RightCenterContainer" type="CenterContainer" parent="in_game_ui/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="in_game_ui/UIBackground/GameUI/RightCenterContainer"]
+layout_mode = 2
+
+[node name="EndTurnButton" type="Button" parent="in_game_ui/UIBackground/GameUI/RightCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "End Turn
+"
+
+[node name="CenterCenterContainer" type="CenterContainer" parent="in_game_ui/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -15.5
+offset_right = 110.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer"]
+layout_mode = 2
+
+[node name="Action_1" type="Button" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 1"
+
+[node name="Action_2" type="Button" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 2
+"
+
+[node name="Action_3" type="Button" parent="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Action 3"
+
+[node name="LeftCenterContainer" type="CenterContainer" parent="in_game_ui/UIBackground/GameUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="in_game_ui/UIBackground/GameUI/LeftCenterContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="in_game_ui/UIBackground/GameUI/LeftCenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="InstructionContainer" type="CenterContainer" parent="in_game_ui"]
+visible = false
+top_level = true
+z_index = 100
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -374.5
+offset_top = -298.0
+offset_right = 374.5
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="in_game_ui/InstructionContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="in_game_ui/InstructionContainer/VBoxContainer"]
+z_index = 100
+layout_mode = 2
+text = "You are the invasive species!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="in_game_ui/InstructionContainer/VBoxContainer"]
+z_index = 100
+layout_mode = 2
+text = "1. Each turn, you have two actions, shown in the action buttons at the bottom of the screen. 
+You can press each button once per turn, and each turn, they are randomly generated.
+
+2. \"Plant\" allows you to place another weed adjacent to your other weeds.
+
+3. \"Protect\" allows you to raise a single weed's resilience level. 
+Weeds that are protected are harder for the Farmer to uproot.
+
+4. \"Eat\" allows you to eat one of the Farmer's crops, bringing you closer to victory! 
+You must be adjacent to a crop in order to Eat it.
+
+5. Click End Turn when you are finished pressing any action buttons you want to use this turn.
+
+6. To win, you must \"Eat\" all of the Farmer's crops.
+
+7. Be careful! If the Farmer moves to a space where your weeds are, the Farmer will uproot them! 
+If all your weeds get pulled, you lose!"
+horizontal_alignment = 1
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="in_game_ui/InstructionContainer"]
+stream = ExtResource("4_2m2x0")
+
+[node name="Tutorial" type="ColorRect" parent="in_game_ui"]
+visible = false
+z_index = 100
+offset_left = 96.0
+offset_top = 96.0
+offset_right = 1196.0
+offset_bottom = 696.0
+color = Color(0.0627451, 0.392157, 0.478431, 1)
+
+[node name="FarmerTut" type="Label" parent="in_game_ui/Tutorial"]
+z_index = 100
+layout_mode = 0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 121.0
+offset_bottom = 122.0
+text = "The Farmer"
+
+[node name="TextureRect" type="TextureRect" parent="in_game_ui/Tutorial/FarmerTut"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -2.0
+offset_right = 24.0
+offset_bottom = 14.0
+grow_vertical = 0
+scale = Vector2(4, 4)
+texture = ExtResource("5_1gygx")
+
+[node name="CropTut" type="Label" parent="in_game_ui/Tutorial"]
+z_index = 100
+layout_mode = 0
+offset_left = 32.0
+offset_top = 216.0
+offset_right = 182.0
+offset_bottom = 242.0
+text = "The Farmer's Crops"
+
+[node name="TextureRect" type="TextureRect" parent="in_game_ui/Tutorial/CropTut"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 16.0
+grow_vertical = 0
+scale = Vector2(4, 4)
+texture = ExtResource("6_ui55a")
+
+[node name="Player Tut" type="Label" parent="in_game_ui/Tutorial"]
+z_index = 100
+layout_mode = 0
+offset_left = 32.0
+offset_top = 336.0
+offset_right = 124.0
+offset_bottom = 362.0
+text = "Your Weeds"
+
+[node name="TextureRect" type="TextureRect" parent="in_game_ui/Tutorial/Player Tut"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 16.0
+grow_vertical = 0
+scale = Vector2(4, 4)
+texture = ExtResource("7_abw03")
+
+[node name="PauseMenuContainer" type="CenterContainer" parent="in_game_ui"]
+visible = false
+top_level = true
+z_index = 101
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -71.5
+offset_right = 30.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="in_game_ui/PauseMenuContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="in_game_ui/PauseMenuContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Volume"
+
+[node name="VolumeScroll" type="HScrollBar" parent="in_game_ui/PauseMenuContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="HelpButton" type="Button" parent="in_game_ui/PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Help"
+
+[node name="MuteButton" type="Button" parent="in_game_ui/PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mute"
+
+[node name="QuitButton" type="Button" parent="in_game_ui/PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="CancelButton" type="Button" parent="in_game_ui/PauseMenuContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/RightCenterContainer/HBoxContainer/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_1" to="." method="_on_action_1_pressed"]
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_2" to="." method="_on_action_2_pressed"]
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/CenterCenterContainer/HBoxContainer/Action_3" to="." method="_on_action_3_pressed"]
+[connection signal="pressed" from="in_game_ui/UIBackground/GameUI/LeftCenterContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="scrolling" from="in_game_ui/PauseMenuContainer/VBoxContainer/VolumeScroll" to="." method="_on_volume_scroll_scrolling"]
+[connection signal="value_changed" from="in_game_ui/PauseMenuContainer/VBoxContainer/VolumeScroll" to="." method="_on_volume_scroll_value_changed"]
+[connection signal="pressed" from="in_game_ui/PauseMenuContainer/VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="in_game_ui/PauseMenuContainer/VBoxContainer/MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="in_game_ui/PauseMenuContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="in_game_ui/PauseMenuContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

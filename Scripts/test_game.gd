@@ -50,8 +50,8 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $in_game_ui/InstructionContainer/GameMusic.playing == false:
-		$in_game_ui/InstructionContainer/GameMusic.play()
+    if $in_game_ui/InstructionContainer/GameMusic.playing == false:
+        $in_game_ui/InstructionContainer/GameMusic.play()
 
 # Handle a new turn
 func new_turn():
@@ -70,10 +70,28 @@ func new_turn():
     # Reset Button Uses
     action_1_used = false
     action_2_used = false
+    
+func check_actions():
+    if Action_1.disabled and Action_2.disabled:
+        var new_stylebox_normal = $in_game_ui/UIBackground/GameUI/RightCenterContainer/HBoxContainer/EndTurnButton.get_theme_stylebox("normal").duplicate()
+        new_stylebox_normal.border_width_top = 3
+        new_stylebox_normal.border_width_bottom = 3
+        new_stylebox_normal.border_width_left = 3
+        new_stylebox_normal.border_width_right = 3
+        new_stylebox_normal.border_color = Color(.59,1,.42,1)
+        $in_game_ui/UIBackground/GameUI/RightCenterContainer/HBoxContainer/EndTurnButton.add_theme_stylebox_override("normal", new_stylebox_normal)
 
 
 # Handles when end turn button is pressed
 func _on_end_turn_button_pressed():
+    var new_stylebox_normal = $in_game_ui/UIBackground/GameUI/RightCenterContainer/HBoxContainer/EndTurnButton.get_theme_stylebox("normal").duplicate()
+    new_stylebox_normal.border_width_top = 0
+    new_stylebox_normal.border_width_bottom = 0
+    new_stylebox_normal.border_width_left = 0
+    new_stylebox_normal.border_width_right = 0
+    new_stylebox_normal.border_color = Color(.59,1,.42,1)
+    $in_game_ui/UIBackground/GameUI/RightCenterContainer/HBoxContainer/EndTurnButton.add_theme_stylebox_override("normal", new_stylebox_normal)
+
     # Increment turn counter
     print("Turn Ended")
     turn_counter += 1
@@ -82,59 +100,60 @@ func _on_end_turn_button_pressed():
         get_tree().get_first_node_in_group("farmer").farmer_start()
     # Call new turn
     new_turn()
+    
 
 func _on_action_1_pressed():
-	print(Action_1.text)
-	action_1_used = true
-	if Action_1.text == "Plant":
-		get_tree().get_first_node_in_group("player").plant()
-		
-	if Action_1.text == "Protect":
-		get_tree().get_first_node_in_group("player").protect()
-		
-	if Action_1.text == "Eat":
-		get_tree().get_first_node_in_group("crop").eat()
-		
-	Action_1.disabled = true
-	check_actions()
+    print(Action_1.text)
+    action_1_used = true
+    if Action_1.text == "Plant":
+        get_tree().get_first_node_in_group("player").plant()
+        
+    if Action_1.text == "Protect":
+        get_tree().get_first_node_in_group("player").protect()
+        
+    if Action_1.text == "Eat":
+        get_tree().get_first_node_in_group("crop").eat()
+        
+    Action_1.disabled = true
+    check_actions()
 
 
 func _on_action_2_pressed():
-	print(Action_2.text)
-	action_2_used = true
-	if Action_2.text == "Plant":
-		get_tree().get_first_node_in_group("player").plant()
-		
-	if Action_2.text == "Protect":
-		get_tree().get_first_node_in_group("player").protect()
-		
-	if Action_2.text == "Eat":
-		get_tree().get_first_node_in_group("crop").eat()
-	
-	Action_2.disabled = true
-	check_actions()
+    print(Action_2.text)
+    action_2_used = true
+    if Action_2.text == "Plant":
+        get_tree().get_first_node_in_group("player").plant()
+        
+    if Action_2.text == "Protect":
+        get_tree().get_first_node_in_group("player").protect()
+        
+    if Action_2.text == "Eat":
+        get_tree().get_first_node_in_group("crop").eat()
+    
+    Action_2.disabled = true
+    check_actions()
 
 # Handles pause/settings menu
 func _on_settings_button_pressed():
-	# Open menu
-	$in_game_ui/PauseMenuContainer.show()
+    # Open menu
+    $in_game_ui/PauseMenuContainer.show()
 
 # Hides the pause menu
 func _on_cancel_button_pressed():
-	$in_game_ui/PauseMenuContainer.hide()
+    $in_game_ui/PauseMenuContainer.hide()
 
 # Handles quitting the game
 func _on_quit_button_pressed():
-	get_tree().quit()
+    get_tree().quit()
 
 # Displays instructions on how to play
 func _on_help_button_pressed():
-	intruction_flag = true
-	$in_game_ui/InstructionContainer.show()
-	$in_game_ui/Tutorial.show()
-	$in_game_ui/PauseMenuContainer.hide()
+    intruction_flag = true
+    $in_game_ui/InstructionContainer.show()
+    $in_game_ui/Tutorial.show()
+    $in_game_ui/PauseMenuContainer.hide()
 
 
 func _on_mute_button_pressed():
-	var bus_index = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_mute(bus_index, true)
+    var bus_index = AudioServer.get_bus_index("Master")
+    AudioServer.set_bus_mute(bus_index, true)

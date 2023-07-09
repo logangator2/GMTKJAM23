@@ -21,7 +21,7 @@ func _on_quit_button_pressed():
 
 
 func _on_level_3_button_pressed():
-    pass # Replace with function body.
+    get_tree().change_scene_to_packed(level_3)
 
 
 func _on_level_2_button_pressed():

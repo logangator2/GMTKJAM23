@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bam641o4b7lba"]
+[gd_scene load_steps=6 format=3 uid="uid://bam641o4b7lba"]
 
 [ext_resource type="Script" path="res://Scripts/win_screen.gd" id="1_8i01t"]
 [ext_resource type="PackedScene" uid="uid://bj6qa6sy16656" path="res://Scenes/main_menu.tscn" id="2_nn8ei"]
 [ext_resource type="PackedScene" uid="uid://c50o5xoaafrf6" path="res://Scenes/test_game3.tscn" id="3_iunct"]
 [ext_resource type="AudioStream" uid="uid://cx44pbw23arpc" path="res://Assets/448274__henryrichard__sfx-success.wav" id="3_yd73m"]
+[ext_resource type="PackedScene" uid="uid://b66erxr0pqsva" path="res://Scenes/test_game4.tscn" id="4_n422y"]
 
 [node name="win" type="Node2D"]
 script = ExtResource("1_8i01t")
 main_scene = ExtResource("2_nn8ei")
 level_2 = ExtResource("3_iunct")
+level_3 = ExtResource("4_n422y")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 color = Color(0.14902, 0.521569, 0, 1)
