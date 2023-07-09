@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ovamm1046h7m"]
+[gd_scene load_steps=8 format=3 uid="uid://ovamm1046h7m"]
 
 [ext_resource type="Script" path="res://Scripts/test_game.gd" id="1_fi6og"]
 [ext_resource type="PackedScene" uid="uid://cj2g7ev1pnv21" path="res://Scenes/test_tilemap.tscn" id="2_nj7h2"]
 [ext_resource type="PackedScene" uid="uid://crb3jtsn0hcmc" path="res://Scenes/in_game_ui.tscn" id="3_4433h"]
 [ext_resource type="AudioStream" uid="uid://c8afplqel75ka" path="res://Assets/Short Retro Platformer Loop #1.mp3" id="4_a3gbj"]
+[ext_resource type="Texture2D" uid="uid://r4va1gbx1ffe" path="res://Assets/farmer/farmer/Layer 1_sprite_1.png" id="5_8wwhb"]
+[ext_resource type="Texture2D" uid="uid://bdyucnm2ipwlo" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0125.png" id="6_811dl"]
+[ext_resource type="Texture2D" uid="uid://bcklt6ip40kuo" path="res://Assets/kenney_pixel-platformer-farm-expansion/Tiles/tile_0059.png" id="6_d5plh"]
 
 [node name="test_game" type="Node2D" node_paths=PackedStringArray("Action_1", "Action_2", "Action_3")]
 script = ExtResource("1_fi6og")
@@ -124,10 +127,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -391.0
-offset_top = -204.5
-offset_right = 391.0
-offset_bottom = 85.5
+offset_left = -374.5
+offset_top = -298.0
+offset_right = 374.5
+offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -137,24 +140,104 @@ size_flags_vertical = 4
 layout_mode = 2
 
 [node name="Label" type="Label" parent="in_game_ui/InstructionContainer/VBoxContainer"]
+z_index = 100
 layout_mode = 2
 text = "You are the invasive species!"
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="in_game_ui/InstructionContainer/VBoxContainer"]
+z_index = 100
 layout_mode = 2
-text = "1. To win, Eat all of the Farmer's crops.
+text = "1. Each turn, you have three actions, shown in the action buttons at the bottom of the screen. 
+You can press each button once per turn, and each turn, they are randomly generated.
 
-2. Be careful! If the Farmer moves to a space where your weeds are, the Farmer will uproot them! 
-Use the Protect action to prevent your weeds from getting pulled. If all your weeds get pulled,
-you lose!
+2. \"Plant\" allows you to place another weed adjacent to your other weeds.
 
-3. Use the action buttons below to Plant, Protect, or Eat with your Weeds. Each button can be pressed
-once per turn.
+3. \"Protect\" allows you to raise a single weed's resilience level. 
+Weeds that are protected are harder for the Farmer to uproot.
 
-4. Click End Turn when you are finished pressing any buttons you want to use this turn."
+4. \"Eat\" allows you to eat one of the Farmer's crops, bringing you closer to victory! 
+You must be adjacent to a crop in order to Eat it.
+
+5. Click End Turn when you are finished pressing any action buttons you want to use this turn.
+
+6. To win, you must \"Eat\" all of the Farmer's crops.
+
+7. Be careful! If the Farmer moves to a space where your weeds are, the Farmer will uproot them! 
+If all your weeds get pulled, you lose!"
+horizontal_alignment = 1
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="in_game_ui/InstructionContainer"]
 stream = ExtResource("4_a3gbj")
+
+[node name="Tutorial" type="ColorRect" parent="in_game_ui"]
+z_index = 100
+offset_left = 96.0
+offset_top = 96.0
+offset_right = 1196.0
+offset_bottom = 696.0
+color = Color(0.0627451, 0.392157, 0.478431, 1)
+
+[node name="FarmerTut" type="Label" parent="in_game_ui/Tutorial"]
+z_index = 100
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 121.0
+offset_bottom = 122.0
+text = "The Farmer"
+
+[node name="TextureRect" type="TextureRect" parent="in_game_ui/Tutorial/FarmerTut"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -2.0
+offset_right = 24.0
+offset_bottom = 14.0
+grow_vertical = 0
+scale = Vector2(4, 4)
+texture = ExtResource("5_8wwhb")
+
+[node name="CropTut" type="Label" parent="in_game_ui/Tutorial"]
+z_index = 100
+offset_left = 32.0
+offset_top = 216.0
+offset_right = 182.0
+offset_bottom = 242.0
+text = "The Farmer's Crops"
+
+[node name="TextureRect" type="TextureRect" parent="in_game_ui/Tutorial/CropTut"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 16.0
+grow_vertical = 0
+scale = Vector2(4, 4)
+texture = ExtResource("6_d5plh")
+
+[node name="Player Tut" type="Label" parent="in_game_ui/Tutorial"]
+z_index = 100
+offset_left = 32.0
+offset_top = 336.0
+offset_right = 124.0
+offset_bottom = 362.0
+text = "Your Weeds"
+
+[node name="TextureRect" type="TextureRect" parent="in_game_ui/Tutorial/Player Tut"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 16.0
+grow_vertical = 0
+scale = Vector2(4, 4)
+texture = ExtResource("6_811dl")
 
 [node name="PauseMenuContainer" type="CenterContainer" parent="in_game_ui"]
 visible = false
@@ -165,10 +248,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = -144.0
-offset_right = 136.0
-offset_bottom = 25.0
+offset_left = -30.0
+offset_top = -71.5
+offset_right = 30.0
+offset_bottom = 71.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
