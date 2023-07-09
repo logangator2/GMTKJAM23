@@ -117,21 +117,21 @@ func spawn_eat_highlight(highlight_coord : Vector2i):
     add_child(highlight)
     
 func plant_action():
-    var foreground_cells : Array = tiles.get_used_cells(1)
-    var direction_vectors = [
-        Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1),
-        Vector2i(-1,0), 				Vector2i(1,0),
-        Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
-    var eligible_spaces : Array = []
-    print(plant_spaces)
-    for plant_i in plant_spaces:
-        for direction_j in direction_vectors:
-            var is_dirt : bool = tiles.get_cell_tile_data(0, plant_i).get_custom_data("dirt")
-            var potential_space = plant_i + direction_j
-            if (potential_space not in foreground_cells) and is_dirt and (potential_space not in occupied_spaces):
-                eligible_spaces.append(potential_space)
-    for space in eligible_spaces:
-        spawn_highlight(space)
+	var foreground_cells : Array = tiles.get_used_cells(1)
+	var direction_vectors = [
+		Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1),
+		Vector2i(-1,0), 				Vector2i(1,0),
+		Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
+	var eligible_spaces : Array = []
+	for plant_i in plant_spaces:
+		for direction_j in direction_vectors:
+			var is_dirt : bool = tiles.get_cell_tile_data(0, plant_i).get_custom_data("dirt")
+			var potential_space = plant_i + direction_j
+			if (potential_space not in foreground_cells) and is_dirt and (potential_space not in occupied_spaces):
+				eligible_spaces.append(potential_space)
+	for space in eligible_spaces:
+		spawn_highlight(space)
+
 
 
 func place_plant(new_location : Vector2i):
@@ -184,22 +184,20 @@ func eat_crop(crop_location : Vector2i):
         highlight.queue_free()
 
 func eat_action():
-    var foreground_cells : Array = tiles.get_used_cells(1)
-    var direction_vectors = [
-        Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1),
-        Vector2i(-1,0), 				Vector2i(1,0),
-        Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
-    var eligible_spaces : Array = []
-    print(plant_spaces)
-    for plant_i in plant_spaces:
-        for direction_j in direction_vectors:
-            var is_dirt : bool = tiles.get_cell_tile_data(0, plant_i).get_custom_data("dirt")
-            var potential_space = plant_i + direction_j
-            if potential_space in crop_spaces:
-                eligible_spaces.append(potential_space)
-    for space in eligible_spaces:
-        spawn_eat_highlight(space)
-    
+	var foreground_cells : Array = tiles.get_used_cells(1)
+	var direction_vectors = [
+		Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1),
+		Vector2i(-1,0), 				Vector2i(1,0),
+		Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
+	var eligible_spaces : Array = []
+	for plant_i in plant_spaces:
+		for direction_j in direction_vectors:
+			var is_dirt : bool = tiles.get_cell_tile_data(0, plant_i).get_custom_data("dirt")
+			var potential_space = plant_i + direction_j
+			if potential_space in crop_spaces:
+				eligible_spaces.append(potential_space)
+	for space in eligible_spaces:
+		spawn_eat_highlight(space)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
