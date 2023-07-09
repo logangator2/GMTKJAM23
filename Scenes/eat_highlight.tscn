@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2ge8jda4oxjw"]
+[gd_scene load_steps=7 format=3 uid="uid://b2uoy4vlfrg5e"]
 
-[ext_resource type="Script" path="res://Scripts/protect_highlight.gd" id="1_14qk8"]
-[ext_resource type="Texture2D" uid="uid://rijbuf3nxkd1" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0038.png" id="2_v1o0d"]
+[ext_resource type="Script" path="res://Scripts/eat_highlight.gd" id="1_h0gjc"]
+[ext_resource type="Texture2D" uid="uid://rijbuf3nxkd1" path="res://Assets/kenney_pixel-platformer/Tiles/tile_0038.png" id="2_cxadk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h20xx"]
 
@@ -26,7 +26,7 @@ Button/styles/pressed = SubResource("StyleBoxEmpty_tpww1")
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_v1o0d")
+"texture": ExtResource("2_cxadk")
 }],
 "loop": true,
 "name": &"default",
@@ -37,7 +37,7 @@ animations = [{
 z_index = 5
 position = Vector2(32, -32)
 scale = Vector2(4, 4)
-script = ExtResource("1_14qk8")
+script = ExtResource("1_h0gjc")
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)

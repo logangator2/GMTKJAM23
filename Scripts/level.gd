@@ -12,15 +12,19 @@ var tile_size : int = 64
 @export var farmer_scene: PackedScene
 @export var highlight_scene: PackedScene
 @export var protect_highlight_scene: PackedScene
+@export var eat_highlight_scene: PackedScene
 
 var occupied_spaces : Array = []
 var plant_spaces : Array = []
+var crop_spaces : Array = []
 
 var plant_callable
 var place_callable
 var protect_callable
 var fortify_callable
 var attack_callable
+var eat_callable
+var crop_callable
 
 func set_player_start():
 	var foreground_cells : Array = tiles.get_used_cells(1)
@@ -62,6 +66,7 @@ func spawn_level_crops():
 			crop.transform.origin = Vector2((crop_x * tile_size) + int(tile_size/2), (crop_y * tile_size) + int(tile_size/2))
 			add_child(crop)
 			occupied_spaces.append(crop_possible_coord)
+			crop_spaces.append(crop_possible_coord)
 			spawned = true
 		else:
 			print("try again crop")
@@ -88,26 +93,32 @@ func spawn_level_farmer():
 			print("try again farmer")
 
 func spawn_highlight(highlight_coord : Vector2i):
-    var highlight = highlight_scene.instantiate()
-    var highlight_x = highlight_coord.x
-    var highlight_y = highlight_coord.y
-    highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
-    add_child(highlight)
-    
+	var highlight = highlight_scene.instantiate()
+	var highlight_x = highlight_coord.x
+	var highlight_y = highlight_coord.y
+	highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
+	add_child(highlight)
+	
 func spawn_protect_highlight(highlight_coord : Vector2i):
-    var highlight = protect_highlight_scene.instantiate()
-    var highlight_x = highlight_coord.x
-    var highlight_y = highlight_coord.y
-    highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
-    add_child(highlight)
-    
+	var highlight = protect_highlight_scene.instantiate()
+	var highlight_x = highlight_coord.x
+	var highlight_y = highlight_coord.y
+	highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
+	add_child(highlight)
+	
+func spawn_eat_highlight(highlight_coord : Vector2i):
+	var highlight = eat_highlight_scene.instantiate()
+	var highlight_x = highlight_coord.x
+	var highlight_y = highlight_coord.y
+	highlight.transform.origin = Vector2((highlight_x * tile_size) + int(tile_size/2), (highlight_y * tile_size) + int(tile_size/2))
+	add_child(highlight)
+	
 func plant_action():
 	var foreground_cells : Array = tiles.get_used_cells(1)
 	var direction_vectors = [
 		Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1),
 		Vector2i(-1,0), 				Vector2i(1,0),
 		Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
-	print("actually planting!")
 	var eligible_spaces : Array = []
 	print(plant_spaces)
 	for plant_i in plant_spaces:
@@ -121,27 +132,26 @@ func plant_action():
 
 
 func place_plant(new_location : Vector2i):
-    print("hello plant eligible tile")
-    var new_plant = player_scene.instantiate()
-    var new_plant_x = new_location.x
-    var new_plant_y = new_location.y
-    new_plant.transform.origin = Vector2((new_plant_x * tile_size) + int(tile_size/2), (new_plant_y * tile_size) + int(tile_size/2))
-    add_child(new_plant)
-    new_plant.play_sound()
-    occupied_spaces.append(new_location)
-    plant_spaces.append(new_location)
-    
-    for highlight in get_tree().get_nodes_in_group("highlight"):
-        highlight.queue_free()
-        
+	var new_plant = player_scene.instantiate()
+	var new_plant_x = new_location.x
+	var new_plant_y = new_location.y
+	new_plant.transform.origin = Vector2((new_plant_x * tile_size) + int(tile_size/2), (new_plant_y * tile_size) + int(tile_size/2))
+	add_child(new_plant)
+	new_plant.play_sound()
+	occupied_spaces.append(new_location)
+	plant_spaces.append(new_location)
+	
+	for highlight in get_tree().get_nodes_in_group("highlight"):
+		highlight.queue_free()
+		
 
 func protect_plant(plant_location : Vector2i):
-    for plant in get_tree().get_nodes_in_group("player"):
-        if plant.plant_coord == plant_location:
-            plant.resiliance += 1
-    
-    for highlight in get_tree().get_nodes_in_group("highlight"):
-        highlight.queue_free()
+	for plant in get_tree().get_nodes_in_group("player"):
+		if plant.plant_coord == plant_location:
+			plant.resiliance += 1
+	
+	for highlight in get_tree().get_nodes_in_group("highlight"):
+		highlight.queue_free()
 
 func protect_action():
 	for plant in plant_spaces:
@@ -157,6 +167,36 @@ func farmer_attack(plant_location : Vector2i):
 				plant_spaces.erase(plant.plant_coord)
 				plant.queue_free()
 				get_tree().get_first_node_in_group("farmer").play_sound()
+	
+
+func eat_crop(crop_location : Vector2i):
+	for crop in get_tree().get_nodes_in_group("crop"):
+		if crop.crop_coord == crop_location:
+			occupied_spaces.erase(crop.crop_coord)
+			crop_spaces.erase(crop.crop_coord)
+			crop.queue_free()
+			get_tree().get_first_node_in_group("farmer").play_sound()
+	
+	for highlight in get_tree().get_nodes_in_group("highlight"):
+		highlight.queue_free()
+
+func eat_action():
+	var foreground_cells : Array = tiles.get_used_cells(1)
+	var direction_vectors = [
+		Vector2i(-1,-1), Vector2i(0,-1), Vector2i(1,-1),
+		Vector2i(-1,0), 				Vector2i(1,0),
+		Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
+	var eligible_spaces : Array = []
+	print(plant_spaces)
+	for plant_i in plant_spaces:
+		for direction_j in direction_vectors:
+			var is_dirt : bool = tiles.get_cell_tile_data(0, plant_i).get_custom_data("dirt")
+			var potential_space = plant_i + direction_j
+			if potential_space in crop_spaces:
+				eligible_spaces.append(potential_space)
+	for space in eligible_spaces:
+		spawn_eat_highlight(space)
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -165,6 +205,8 @@ func _ready():
 	protect_callable = Callable(self, "protect_action")
 	fortify_callable = Callable(self, "protect_plant")
 	attack_callable = Callable(self, "farmer_attack")
+	eat_callable = Callable(self, "eat_action")
+	crop_callable = Callable(self, "eat_crop")
 	
 	set_player_start()
 	for i in range(4):
