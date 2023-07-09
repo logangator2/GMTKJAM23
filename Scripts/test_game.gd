@@ -19,16 +19,15 @@ var action_3_used = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	var map = map_scene.instantiate()
 	add_child(map)
 	# Shuffle actions, make sure eat is not in first 'hand'
 	action_array.shuffle()
-	if turn_counter == 1 and (action_array[0] == "Eat"):
-		action_array[0] = "Plant"
-	if turn_counter == 1 and (action_array[1] == "Eat"):
-		action_array[1] = "Plant"
-	if turn_counter == 1 and (action_array[2] == "Eat"):
-		action_array[2] = "Plant"
+	while (action_array[0] == "Eat") or (action_array[1] == "Eat") or (action_array[2] == "Eat"):
+		action_array.shuffle()
+		print("try again shuffle 1")
+	print(action_array)
 		
 	# Create Button Names
 	Action_1.text = action_array[0]
@@ -54,14 +53,17 @@ func new_turn():
 	
 	# Shuffle Actions
 	action_array.shuffle()
-	# NOTE: Error in logic since action button 1 will always be Eat after turn 3
-	if turn_counter > 3 and (action_array[0] != "Eat" or action_array[1] != "Eat" or action_array[2] != "Eat"):
-		action_array[0] = "Eat"
+	
+	print(action_array)
 	
 	# Reset Button Names
 	Action_1.text = action_array[0]
 	Action_2.text = action_array[1]
 	Action_3.text = action_array[2]
+	
+	Action_1.disabled = false
+	Action_2.disabled = false
+	Action_3.disabled = false
 	
 	# Reset Button Uses
 	action_1_used = false
@@ -89,6 +91,8 @@ func _on_action_1_pressed():
 		
 	if Action_1.text == "Eat":
 		get_tree().get_first_node_in_group("crop").eat()
+		
+	Action_1.disabled = true
 
 
 func _on_action_2_pressed():
@@ -102,7 +106,8 @@ func _on_action_2_pressed():
 		
 	if Action_2.text == "Eat":
 		get_tree().get_first_node_in_group("crop").eat()
-		
+	
+	Action_2.disabled = true		
 
 func _on_action_3_pressed():
 	print(Action_3.text)
@@ -115,6 +120,8 @@ func _on_action_3_pressed():
 		
 	if Action_3.text == "Eat":
 		get_tree().get_first_node_in_group("crop").eat()
+	
+	Action_3.disabled = true
 
 # Handles pause/settings menu
 func _on_settings_button_pressed():

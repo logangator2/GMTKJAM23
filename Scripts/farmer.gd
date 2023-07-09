@@ -28,10 +28,7 @@ func farmer_start():
 	var direction : int
 	var new_possible_location : Vector2
 	var i_new_possible_location : Vector2i
-	print(tile_node.occupied_spaces)
-	print(current_location)
 	tile_node.occupied_spaces.erase(Vector2i(current_location))
-	print(tile_node.occupied_spaces)
 	while !moved:
 		var crop_flag : bool = false
 		direction = randi_range(1, 8)

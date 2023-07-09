@@ -123,7 +123,6 @@ func plant_action():
 		Vector2i(-1,0), 				Vector2i(1,0),
 		Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
 	var eligible_spaces : Array = []
-	print(plant_spaces)
 	for plant_i in plant_spaces:
 		for direction_j in direction_vectors:
 			var is_dirt : bool = tiles.get_cell_tile_data(0, plant_i).get_custom_data("dirt")
@@ -190,7 +189,6 @@ func eat_action():
 		Vector2i(-1,0), 				Vector2i(1,0),
 		Vector2i(-1,1), Vector2i(0, 1), Vector2i(1,1)]
 	var eligible_spaces : Array = []
-	print(plant_spaces)
 	for plant_i in plant_spaces:
 		for direction_j in direction_vectors:
 			var is_dirt : bool = tiles.get_cell_tile_data(0, plant_i).get_custom_data("dirt")
