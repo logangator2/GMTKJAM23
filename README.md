@@ -1,5 +1,5 @@
 # GMTKJAM23
-Code repository for GMTK Game Jam 2023
+### [Download the game from itch.io](https://logangator2.itch.io/invasive-species)
 
 # Invasive Species
 A GMTK 2023 Submission made by two friends. The theme was "roles reversed," so this game allows you to grow weeds instead of crops with the goal of taking over a field.
